@@ -24,6 +24,9 @@
         android:id="@+id/customListView"
         app:layout_constraintBottom_toTopOf="@+id/nav_host_fragment_content_main"
         app:layout_constraintEnd_toEndOf="parent"
+        android:divider="@color/black"
+        android:dividerHeight="2dp"
+        android:listSelector="@color/purple_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

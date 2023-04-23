@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -57,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.customListView);
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(),bookList,images);
         listView.setAdapter(customBaseAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ position :: " + i);
+
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+            }
+        });
     }
 
     @Override

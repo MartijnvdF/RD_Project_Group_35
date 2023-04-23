@@ -10,12 +10,14 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageIcon"/>
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
         android:gravity="center"
-        android:text="My Text"/>
+        android:text="@string/my_text"
+        android:textSize="30sp" />
 
 
 </LinearLayout>
