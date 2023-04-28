@@ -9,8 +9,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signin"
-        android:text="Sign in"
+        android:id="@+id/signup1"
+        android:text="Sign Up"
         android:textColor="@color/black"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -20,8 +20,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:layout_below="@id/signin"
+        android:id="@+id/username1"
+        android:layout_below="@id/signup1"
         android:background="#30ffffff"
         android:hint="Username"
         android:textColorHint="@color/black"
@@ -34,8 +34,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
-        android:layout_below="@id/username"
+        android:id="@+id/password1"
+        android:layout_below="@id/username1"
         android:background="#30ffffff"
         android:hint="Password"
         android:textColorHint="@color/black"
@@ -46,52 +46,40 @@
         android:drawablePadding="20dp"
         android:inputType="textPassword"/>
 
-    <TextView
-        android:id="@+id/attempts_left"
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Attempts left:"
-        android:textColor="#FF0000"
-        android:layout_below="@+id/password"
-        android:layout_alignTop="@+id/loginbtn"
-        android:layout_alignParentStart="@+id/loginbtn"
-        android:layout_alignBottom="@+id/loginbtn"
-        android:layout_toEndOf="@+id/loginbtn"
-        android:layout_alignParentEnd="true"
-        android:textSize="20sp"/>
+        android:id="@+id/confirm_password1"
+        android:layout_below="@id/password1"
+        android:background="#30ffffff"
+        android:hint="Confirm password"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
 
-    <TextView
-        android:id="@+id/attempts_left_counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/attempts_left"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-17dp"
-        android:layout_marginEnd="33dp"
-        android:layout_toStartOf="@+id/attempts_left"
-        android:text="New Text"
-        android:textColor="#FF0000"
-        android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/signUpBtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password"
+        android:layout_below="@id/confirm_password1"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_margin="20dp"
         android:layout_marginTop="31dp"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="LOGIN" />
+        android:text="Sign Up" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signUpBtn"
+        android:id="@+id/cancel_button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginbtn"
-        android:text="Sign Up"
+        android:layout_below="@+id/signUpBtn1"
+        android:text="cancel"
         android:layout_centerInParent="true"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:layout_margin="5dp"/>

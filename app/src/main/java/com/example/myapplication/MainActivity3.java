@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,7 +38,10 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Bundle extras = getIntent().getExtras();
+        String test = extras.getString("Username");
+        String test2 = "Welcome" + test;
+        Toast.makeText(MainActivity3.this, "Welcome " + test, Toast.LENGTH_SHORT).show();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
