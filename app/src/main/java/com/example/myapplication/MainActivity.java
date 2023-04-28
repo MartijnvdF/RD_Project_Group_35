@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
     MaterialButton loginBtn, cancelBtn;
     EditText username,password;
     TextView attemptsLeft, attemptsLeftCounter;
+    String dummyUsername = "admin";
+    String dummyPassword = "admin";
+
     int counter = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_login);
         setContentView(R.layout.login_page);
 
         username = findViewById(R.id.username);
@@ -50,9 +53,10 @@ public class MainActivity extends AppCompatActivity {
         //admin and admin
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                if (username.getText().toString().equals(dummyUsername) && password.getText().toString().equals(dummyPassword)) {
                     Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(MainActivity.this, "Redirecting...", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, MainActivity3.class);
