@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.myapplication.ui.account.AccountFragment;
+import com.example.myapplication.ui.home.HomeFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,20 +42,9 @@ public class MainActivity3 extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String test = extras.getString("Username");
-        String test2 = "Welcome " + test;
-        Bundle bundle = new Bundle();
-        bundle.putString("edttext", "From activity");
-        Fragment fragment = new Fragment();
-        //fragment.setArguments(bundle);
-        //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_main, fragment).commit();
-
-        Toast.makeText(MainActivity3.this, "Welcome " + test, Toast.LENGTH_SHORT).show();
 
         com.example.myapplication.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        TextView customWelcomeMsg = (TextView) findViewById(R.id.custom_Msg);
-        customWelcomeMsg.setText(test2);
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
@@ -66,7 +59,6 @@ public class MainActivity3 extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_account, R.id.logout)
                 .setOpenableLayout(drawer)
                 .build();
-
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);

@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +21,8 @@ import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
+import org.w3c.dom.Text;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -34,6 +38,12 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        String username = "Welcome " + sharedPreferences.getString("Username", "");
+
+        TextView textView = root.findViewById(R.id.custom_Msg);
+        textView.setText(username);
 
         gridView = (GridView) root.findViewById(R.id.customListView);
         gridView.setAdapter(new CustomBaseAdapter(getActivity(), bookList));

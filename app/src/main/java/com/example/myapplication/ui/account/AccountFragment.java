@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.account;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
 
+
 public class AccountFragment extends Fragment {
 
     private FragmentAccountBinding binding;
@@ -22,11 +25,12 @@ public class AccountFragment extends Fragment {
 
         binding = FragmentAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        //TextView textView = binding.getRoot().findViewById(R.id.account_info);
-        //String string = getArguments().getString("edttext");
-        //textView.setText(string);
 
+        SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        String userName = sharedPreferences.getString("Username", "");
 
+        TextView textView = (TextView) root.findViewById(R.id.account_info);
+        textView.setText(String.format("Full name: %s", userName));
 
 
         return root;
