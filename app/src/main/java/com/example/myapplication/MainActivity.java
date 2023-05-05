@@ -13,11 +13,10 @@ import com.google.android.material.button.MaterialButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    MaterialButton loginBtn, cancelBtn, signUpBtn;
-    EditText username,password, confirmPassword;
+    MaterialButton loginBtn, signUpBtn;
+    EditText username,password;
     TextView attemptsLeft, attemptsLeftCounter;
-    String dummyUsername = "admin";
-    String dummyPassword = "admin";
+
     DataBaseActivity dataBaseActivity;
 
     int counter = 3;
@@ -38,11 +37,6 @@ public class MainActivity extends AppCompatActivity {
         attemptsLeftCounter.setVisibility(View.GONE);
 
         dataBaseActivity = new DataBaseActivity(this);
-
-
-
-
-        //admin and admin
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

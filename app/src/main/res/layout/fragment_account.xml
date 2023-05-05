@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#A4D2FC"
+    tools:context=".ui.account.AccountFragment">
+
+    <ImageView
+        android:id="@+id/accountPic"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/account" />
+
+    <TextView
+        android:id="@+id/accountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accountPic"
+        android:gravity="center"
+        android:text="Account Info"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/account_info"
+        android:textColor="@color/black"
+        android:layout_below="@+id/accountText"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/change_password"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A4D2FC"
+        android:text="change password"
+        android:textColor="@color/black"
+        android:layout_below="@+id/account_info"
+        app:cornerRadius="25dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_account"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A4D2FC"
+        android:text="delete account"
+        android:textColor="@color/black"
+        android:layout_below="@+id/change_password"
+        app:cornerRadius="25dp" />
+
+
+</RelativeLayout>
