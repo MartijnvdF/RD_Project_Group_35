@@ -30,33 +30,30 @@ public class SignUp extends AppCompatActivity {
 
         dataBaseActivity = new DataBaseActivity(this);
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = username.getText().toString();
-                String pw = password.getText().toString();
-                String cpw = confirmPassword.getText().toString();
+        signUpBtn.setOnClickListener(view -> {
+            String user = username.getText().toString();
+            String pw = password.getText().toString();
+            String cpw = confirmPassword.getText().toString();
 
-                if(user.equals("")||pw.equals("")||cpw.equals("")) {
-                    Toast.makeText(SignUp.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
-                }else{
-                    if(pw.equals(cpw)){
-                        Boolean checkUser = dataBaseActivity.checkusername(user);
-                        if(!checkUser){
-                            Boolean insert = dataBaseActivity.insertData(user, pw);
-                            if(insert){
-                                Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUp.this, MainActivity.class));
-                                finish();;
-                            }else{
-                                Toast.makeText(SignUp.this,"SIGN UP FAILED",Toast.LENGTH_SHORT).show();
-                            }
+            if(user.equals("")||pw.equals("")||cpw.equals("")) {
+                Toast.makeText(SignUp.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+            }else{
+                if(pw.equals(cpw)){
+                    Boolean checkUser = dataBaseActivity.checkusername(user);
+                    if(!checkUser){
+                        Boolean insert = dataBaseActivity.insertData(user, pw);
+                        if(insert){
+                            Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignUp.this, MainActivity.class));
+                            finish();;
                         }else{
-                            Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this,"SIGN UP FAILED",Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        Toast.makeText(SignUp.this, "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
                     }
+                }else{
+                    Toast.makeText(SignUp.this, "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
