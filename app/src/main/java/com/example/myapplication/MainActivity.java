@@ -1,86 +1,93 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.button.MaterialButton;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
-
 public class MainActivity extends AppCompatActivity {
+    MaterialButton loginBtn, signUpBtn;
+    EditText username,password;
+    TextView attemptsLeft, attemptsLeftCounter;
 
-    private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
+    DataBaseActivity dataBaseActivity;
 
-    String bookList[] = {"book1", "book2", "book3"};
-    int images[] = {R.drawable.images, R.drawable.images, R.drawable.images};
-
-    ListView listView;
-
+    int counter = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.login_page);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        attemptsLeftCounter = findViewById(R.id.attempts_left_counter);
+        attemptsLeft = findViewById(R.id.attempts_left);
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+        loginBtn = findViewById(R.id.loginbtn);
+        signUpBtn = findViewById(R.id.signUpBtn);
+
+        attemptsLeft.setVisibility(View.GONE);
+        attemptsLeftCounter.setVisibility(View.GONE);
+
+        dataBaseActivity = new DataBaseActivity(this);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                String user = username.getText().toString();
+                String pw = password.getText().toString();
+
+                if(user.equals("")||pw.equals("")) {
+                    Toast.makeText(MainActivity.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+                } else {
+                    Boolean checkuserpass = dataBaseActivity.checkusernamepassword(user, pw);
+                    if (checkuserpass) {
+                        Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+
+                        //put username into sharedpref for other files to use
+                        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("Username", user);
+                        editor.apply();
+
+                        //redirect to main app
+                        Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                        intent.putExtra("Username", user);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                        //increase counter
+                        Toast.makeText(MainActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                        attemptsLeft.setVisibility(View.VISIBLE);
+                        attemptsLeftCounter.setVisibility(View.VISIBLE);
+                        counter--;
+                        attemptsLeftCounter.setText(Integer.toString(counter));
+
+                        //if too many attempts failed, then login isn't available anymore
+                        if(counter == 0){
+                            loginBtn.setEnabled(false);
+                        }
+                    }
+                }
             }
         });
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
-        listView = (ListView) findViewById(R.id.customListView);
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(),bookList,images);
-        listView.setAdapter(customBaseAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ position :: " + i);
-
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SignUp.class));
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }

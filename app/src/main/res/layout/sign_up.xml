@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/signup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username1"
+        android:layout_below="@id/signup1"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#A5D2FC"
+        android:hint="Username"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:padding="13dp"
+        android:textSize="25sp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password1"
+        android:layout_below="@id/username1"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#A5D2FC"
+        android:hint="Password"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:padding="13dp"
+        android:textSize="25sp"
+        android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_password1"
+        android:layout_below="@id/password1"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#A5D2FC"
+        android:hint="Confirm password"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:padding="13dp"
+        android:textSize="25sp"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUpBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@id/confirm_password1"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="20dp"
+        android:layout_marginTop="31dp"
+        app:cornerRadius="25dp"
+        android:textColor="@color/black"
+        android:backgroundTint="#5766ED"
+        android:textSize="20sp"
+        android:text="Sign Up" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@+id/signUpBtn1"
+        android:text="cancel"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#A4D2FC"
+        app:cornerRadius="25dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"/>
+
+
+</RelativeLayout>
