@@ -10,14 +10,16 @@ import android.widget.TextView;
 
 import com.example.myapplication.ui.home.HomeFragment;
 
+import java.util.List;
+
 public class CustomBaseAdapter extends BaseAdapter {
 
     Context context;
-    String bookList[];
+    List<String> bookList;
 
     LayoutInflater inflater;
 
-    public CustomBaseAdapter(Context ctx, String [] bookList){
+    public CustomBaseAdapter(Context ctx, List<String> bookList){
         this.context = ctx;
         this.bookList = bookList;
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -25,7 +27,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return bookList.length;
+        return bookList.size();
     }
 
     @Override
@@ -42,7 +44,7 @@ public class CustomBaseAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.activity_custom_list_view, null);
         TextView txtView = (TextView) view.findViewById(R.id.textView);
-        txtView.setText(bookList[i]);
+        txtView.setText(bookList.get(i));
         return view;
     }
 }
