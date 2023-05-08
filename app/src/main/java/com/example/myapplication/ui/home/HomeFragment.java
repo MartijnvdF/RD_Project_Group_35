@@ -39,14 +39,19 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
 
+        //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String username = "Welcome " + sharedPreferences.getString("Username", "");
 
+        //display username
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
+        //show gridview using booklist
         gridView = (GridView) root.findViewById(R.id.customListView);
         gridView.setAdapter(new CustomBaseAdapter(getActivity(), bookList));
+
+        //TO DO: redirect to another page using position
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

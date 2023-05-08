@@ -56,7 +56,7 @@ public class MainActivity3 extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_account, R.id.logout)
+                R.id.nav_home, R.id.nav_account, R.id.nav_settings, R.id.logout)
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -64,19 +64,13 @@ public class MainActivity3 extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        //loggin out
         MenuItem logoutItem = navigationView.getMenu().findItem(R.id.logout);
         logoutItem.setOnMenuItemClickListener(menuItem -> {
             startActivity(new Intent(MainActivity3.this, MainActivity.class));
             finish();
             return true;
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

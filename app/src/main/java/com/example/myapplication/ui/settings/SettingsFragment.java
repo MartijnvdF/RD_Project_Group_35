@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.account;
+package com.example.myapplication.ui.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,29 +10,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
+import com.example.myapplication.databinding.FragmentSettingsBinding;
 
 
-public class AccountFragment extends Fragment {
-
-    private FragmentAccountBinding binding;
+public class SettingsFragment extends Fragment {
+    private FragmentSettingsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentAccountBinding.inflate(inflater, container, false);
+        binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //get username from login
-        SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("Username", "");
-
-        //display username under info
-        TextView textView = (TextView) root.findViewById(R.id.account_info);
-        textView.setText(String.format("Full name: %s", userName));
 
         return root;
     }

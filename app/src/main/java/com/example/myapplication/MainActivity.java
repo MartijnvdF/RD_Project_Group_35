@@ -54,22 +54,27 @@ public class MainActivity extends AppCompatActivity {
                     if (checkuserpass) {
                         Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
+                        //put username into sharedpref for other files to use
                         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("Username", user);
                         editor.apply();
 
+                        //redirect to main app
                         Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
                         intent.putExtra("Username", user);
                         startActivity(intent);
                         finish();
                     } else {
+
+                        //increase counter
                         Toast.makeText(MainActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                         attemptsLeft.setVisibility(View.VISIBLE);
                         attemptsLeftCounter.setVisibility(View.VISIBLE);
                         counter--;
                         attemptsLeftCounter.setText(Integer.toString(counter));
 
+                        //if too many attempts failed, then login isn't available anymore
                         if(counter == 0){
                             loginBtn.setEnabled(false);
                         }

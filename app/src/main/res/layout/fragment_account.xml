@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/accountPic"
+        android:layout_marginStart="10dp"
         android:gravity="center"
         android:text="Account Info"
         android:textColor="@color/black"
@@ -31,6 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:id="@+id/account_info"
         android:textColor="@color/black"
         android:layout_below="@+id/accountText"/>
@@ -39,6 +41,7 @@
         android:id="@+id/change_password"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#A4D2FC"
         android:text="change password"
         android:textColor="@color/black"
@@ -49,6 +52,7 @@
         android:id="@+id/delete_account"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:backgroundTint="#A4D2FC"
         android:text="delete account"
         android:textColor="@color/black"
