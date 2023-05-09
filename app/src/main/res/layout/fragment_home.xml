@@ -32,19 +32,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_Msg" />
 
-    <GridView
-        android:id="@+id/customListView"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/customListView"
         android:background="@color/white"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:verticalSpacing="10dp"
         android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:dividerHeight="10dp"
+        android:divider="@color/white"
+        android:layout_marginBottom="10dp"
+        />
+
+    <!--    <GridView-->
+<!--        android:id="@+id/customListView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/white"-->
+<!--        android:horizontalSpacing="10dp"-->
+<!--        android:numColumns="2"-->
+<!--        android:verticalSpacing="10dp"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

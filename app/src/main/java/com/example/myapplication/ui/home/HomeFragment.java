@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     GridView gridView;
-    String[] bookList = {"book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8", "book9"};
+    ListView listView;
     List<String> booklist1 = new ArrayList<>();
 
 
@@ -63,40 +64,45 @@ public class HomeFragment extends Fragment {
 
         readBooks();
 
+        listView = (ListView) root.findViewById(R.id.customListView);
+        listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
+
+
         //show gridview using booklist
-        gridView = (GridView) root.findViewById(R.id.customListView);
+        //gridView = (GridView) root.findViewById(R.id.customListView);
 
         //using arrayAdapter for easy use
-        gridView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
+        //gridView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
 
         //using customAdapter for more complex views
         //gridView.setAdapter(new CustomBaseAdapter(getActivity(), booklist1));
 
         //TO DO: redirect to another page using position
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
             }
-        });
+        });*/
 
         return root;
     }
 
     private void readBooks(){
 
-        InputStream inputStream = getResources().openRawResource(R.raw.dummy);
+        InputStream inputStream = getResources().openRawResource(R.raw.books);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8)
         );
         String line = "";
         try {
+            line = reader.readLine();
             while((line = reader.readLine())!=null){
                 //split by ','
-                String[] info = line.split(",");
+                String[] info = line.split(";");
 
                 //read data
-                booklist1.add(info[4]);
+                booklist1.add(info[5]);
             }
         } catch (IOException e) {
             Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
