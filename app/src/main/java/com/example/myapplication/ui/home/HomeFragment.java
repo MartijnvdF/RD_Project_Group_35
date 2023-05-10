@@ -3,7 +3,6 @@ package com.example.myapplication.ui.home;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,26 +12,19 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.CustomBaseAdapter;
-import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,33 +54,24 @@ public class HomeFragment extends Fragment {
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        readBooks();
+        getCourses();
+
 
         listView = (ListView) root.findViewById(R.id.customListView);
         listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
 
-
-        //show gridview using booklist
-        //gridView = (GridView) root.findViewById(R.id.customListView);
-
-        //using arrayAdapter for easy use
-        //gridView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
-
-        //using customAdapter for more complex views
-        //gridView.setAdapter(new CustomBaseAdapter(getActivity(), booklist1));
-
         //TO DO: redirect to another page using position
-        /*gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
             }
-        });*/
+        });
 
         return root;
     }
 
-    private void readBooks(){
+    private void getCourses(){
 
         InputStream inputStream = getResources().openRawResource(R.raw.books);
         BufferedReader reader = new BufferedReader(

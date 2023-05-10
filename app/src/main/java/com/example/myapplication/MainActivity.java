@@ -40,44 +40,41 @@ public class MainActivity extends AppCompatActivity {
 
         dataBaseActivity = new DataBaseActivity(this);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        loginBtn.setOnClickListener(view -> {
 
-                String user = username.getText().toString();
-                String pw = password.getText().toString();
+            String user = username.getText().toString();
+            String pw = password.getText().toString();
 
-                if(user.equals("")||pw.equals("")) {
-                    Toast.makeText(MainActivity.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+            if(user.equals("")||pw.equals("")) {
+                Toast.makeText(MainActivity.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+            } else {
+                Boolean checkuserpass = dataBaseActivity.checkusernamepassword(user, pw);
+                if (checkuserpass) {
+                    Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+
+                    //put username into sharedpref for other files to use
+                    SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Username", user);
+                    editor.apply();
+
+                    //redirect to main app
+                    Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                    intent.putExtra("Username", user);
+                    startActivity(intent);
+                    finish();
                 } else {
-                    Boolean checkuserpass = dataBaseActivity.checkusernamepassword(user, pw);
-                    if (checkuserpass) {
-                        Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
-                        //put username into sharedpref for other files to use
-                        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("Username", user);
-                        editor.apply();
+                    //increase counter
+                    Toast.makeText(MainActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    attemptsLeft.setVisibility(View.VISIBLE);
+                    attemptsLeftCounter.setVisibility(View.VISIBLE);
+                    counter--;
+                    attemptsLeftCounter.setText(Integer.toString(counter));
 
-                        //redirect to main app
-                        Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                        intent.putExtra("Username", user);
-                        startActivity(intent);
-                        finish();
-                    } else {
-
-                        //increase counter
-                        Toast.makeText(MainActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
-                        attemptsLeft.setVisibility(View.VISIBLE);
-                        attemptsLeftCounter.setVisibility(View.VISIBLE);
-                        counter--;
-                        attemptsLeftCounter.setText(Integer.toString(counter));
-
-                        //if too many attempts failed, then login isn't available anymore
-                        if(counter == 0){
-                            loginBtn.setEnabled(false);
-                        }
+                    //if too many attempts failed, then login isn't available anymore
+                    if(counter == 0){
+                        loginBtn.setEnabled(false);
                     }
                 }
             }
