@@ -8,26 +8,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.CustomBaseAdapter;
-import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
-import org.w3c.dom.Text;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     GridView gridView;
-    String[] bookList = {"book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8", "book9"};
+    ListView listView;
+    List<String> booklist1 = new ArrayList<>();
 
 
 
@@ -47,12 +54,14 @@ public class HomeFragment extends Fragment {
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        //show gridview using booklist
-        gridView = (GridView) root.findViewById(R.id.customListView);
-        gridView.setAdapter(new CustomBaseAdapter(getActivity(), bookList));
+        getCourses();
+
+
+        listView = (ListView) root.findViewById(R.id.customListView);
+        listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
 
         //TO DO: redirect to another page using position
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
@@ -60,6 +69,30 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void getCourses(){
+
+        InputStream inputStream = getResources().openRawResource(R.raw.books);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(inputStream, StandardCharsets.UTF_8)
+        );
+        String line = "";
+        try {
+            line = reader.readLine();
+            while((line = reader.readLine())!=null){
+                //split by ','
+                String[] info = line.split(";");
+
+                //read data
+                booklist1.add(info[5]);
+            }
+        } catch (IOException e) {
+            Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override

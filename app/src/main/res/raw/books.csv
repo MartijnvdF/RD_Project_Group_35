@@ -1,0 +1,15 @@
+﻿isbn;author;title;version;year;course;link
+ISBN-978-0-134-67094-2;Y. Daniel Liang;Introduction to Java Programming and Data Structures;Comprehensive Version, twelfth edition;2021;Object Oriented Programming;
+ISBN-978-1-292-22187-8;Y. Daniel Liang;Introduction to Java Programming and Data Structures;Comprehensive Version, Global Edition eleventh edition;2018;Object Oriented Programming;
+ISBN-978-1-260-09199-1;Kenneth H. Rosen;Discrete Mathematics and Its Applications;International Student Edition, eight version;2019;Mathematical Structures;
+ISBN-978-1-292-22282-0;Walter Savitch;Problem Solving with C++;tenth edition;2018;Imperative Programming;
+ISBN-978-1-337-27536-1;R. Larson and B.H. Edwards;Calculus of a Single Variable;eleventh edition;2017;Calculus and Probability Theory;
+ISBN-978-1-260-09199-1;Kenneth H. Rosen;Discrete Mathematics and Its Applications;International Student Edition, eight version;2019;Calculus and Probability Theory;
+ISBN-735679665;Karl Wiegers, Joy Beatty;Software Requirements;Third Edition Microsoft Press;2013;Requirement Engineering;
+ISBN-9780273769248;Andrew S. Tanenbaum;Structured Computer Organisation;sixth edition, Pearson;2013;Processors;
+ISBN-978-0131485211;Andrew S. Tanenbaum;Structured Computer Organisation;fifth edition, Pearson;2006;Processors;
+;Adrienne Watt, Nelson Eng;Database Desgin;second edition;2014;Information Modelling and Databases;
+ISBN-978-1-107-19539-4;David L. Poole, Alan K. Mackworth;Artificial Intelligence: Foundations of Computational Agents;second edition;2017;Artificial Intelligence;
+ISBN-978-0-321-44658-9;Ramez Elmasri;Fundamentals of Database Systems;fourth edition;2004;Information Modelling and Databases;
+ISBN-978-0-321-44658-9;Ramez Elmasri;Fundamentals of Database Systems;fifth edition;2007;Information Modelling and Databases;
+ISBN-978-1-260-09199-1;Kenneth H. Rosen;Discrete Mathematics and Its Applications;International Student Edition, eight version;2019;Combinatorics;
