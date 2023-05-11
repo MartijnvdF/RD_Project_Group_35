@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
@@ -35,6 +36,7 @@ public class HomeFragment extends Fragment {
     GridView gridView;
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
+    DataBaseActivity dataBaseActivity;
 
 
 
@@ -46,9 +48,14 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
 
+        dataBaseActivity = new DataBaseActivity(getContext());
+
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String username = "Welcome " + sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("Username", "");
+
+        //display fullname
+        String username = "Welcome " + dataBaseActivity.getData(userName).get(2);
 
         //display username
         TextView textView = root.findViewById(R.id.custom_Msg);

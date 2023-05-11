@@ -39,9 +39,9 @@ public class SignUp extends AppCompatActivity {
                 Toast.makeText(SignUp.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             }else{
                 if(pw.equals(cpw)){
-                    Boolean checkUser = dataBaseActivity.checkusername(user);
+                    Boolean checkUser = dataBaseActivity.checkUsername(user);
                     if(!checkUser){
-                        Boolean insert = dataBaseActivity.insertData(user, pw);
+                        Boolean insert = dataBaseActivity.insertUser(user, pw);
                         if(insert){
                             Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));

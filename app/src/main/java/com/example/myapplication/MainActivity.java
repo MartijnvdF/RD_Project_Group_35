@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             if(user.equals("")||pw.equals("")) {
                 Toast.makeText(MainActivity.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             } else {
-                Boolean checkuserpass = dataBaseActivity.checkusernamepassword(user, pw);
+                Boolean checkuserpass = dataBaseActivity.checkUsernamePassword(user, pw);
                 if (checkuserpass) {
                     Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
