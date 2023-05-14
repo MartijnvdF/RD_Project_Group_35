@@ -55,13 +55,18 @@ public class HomeFragment extends Fragment {
         String userName = sharedPreferences.getString("Username", "");
 
         //display fullname
-        String username = "Welcome " + dataBaseActivity.getData(userName).get(2);
+        String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);
 
         //display username
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        getCourses();
+        //getCourses();
+        booklist1 = dataBaseActivity.getBooksData();
+
+        if(dataBaseActivity.isBooksEmpty())
+            dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books));
+
 
 
         listView = (ListView) root.findViewById(R.id.customListView);
@@ -71,6 +76,10 @@ public class HomeFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //TODO: go to new page to fill in new book using database.insertBook
+                //Intent intent = new Intent();
+                //startActivity(intent);
+
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
             }
         });

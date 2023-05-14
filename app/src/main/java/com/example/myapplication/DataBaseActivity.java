@@ -1,12 +1,17 @@
 package com.example.myapplication;
-import static java.sql.Types.NULL;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class DataBaseActivity extends SQLiteOpenHelper{
@@ -14,6 +19,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     private static DataBaseActivity dataBaseActivity;
     public static final int DBVersion = 1;
     public static final String TABLE_NAME = "users";
+    public static final String TABLE_NAME1 = "books";
 
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
@@ -60,13 +66,63 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                 .append(EMAIL)
                 .append(" TEXT)");
 
+        StringBuilder sql1;
+        sql1 = new StringBuilder()
+                .append("CREATE TABLE ")
+                .append(TABLE_NAME1)
+                .append("(")
+                .append("isbn")
+                .append(" TEXT PRIMARY KEY, ")
+                .append("author")
+                .append(" TEXT, ")
+                .append("title")
+                .append(" TEXT , ")
+                .append("version")
+                .append(" TEXT, ")
+                .append("year")
+                .append(" TEXT, ")
+                .append("course")
+                .append(" TEXT)");
+
         database.execSQL(sql.toString());
+        database.execSQL(sql1.toString());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase database, int i, int i1) {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         onCreate(database);
+    }
+
+    public void fillBooksDatabase(InputStream inputStream){
+        SQLiteDatabase database = this.getWritableDatabase();
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line;
+        database.beginTransaction();
+        try {
+            line = bufferedReader.readLine();
+            while((line = bufferedReader.readLine())!=null){
+                //split by ','
+                String[] columns = line.split(";");
+                if(columns.length != 6){
+                    Log.d("CSVParser", "skipping lines");
+                    continue;
+                }
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("isbn", columns[0].trim());
+                contentValues.put("author", columns[1].trim());
+                contentValues.put("title", columns[2].trim());
+                contentValues.put("version", columns[3].trim());
+                contentValues.put("year", columns[4].trim());
+                contentValues.put("course", columns[5].trim());
+                database.insert(TABLE_NAME1, null, contentValues);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        database.setTransactionSuccessful();
+        database.endTransaction();
     }
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -77,20 +133,33 @@ public class DataBaseActivity extends SQLiteOpenHelper{
 
     }
 
-    public ArrayList<String> getData(String name){
+    public ArrayList<String> getBooksData(){
+        SQLiteDatabase database = this.getReadableDatabase();
+        ArrayList<String> courses = new ArrayList<>();
+
+        try{
+            Cursor cursor = database.rawQuery("SELECT course FROM " + TABLE_NAME1, null);
+            while (cursor.moveToNext()){
+                courses.add(cursor.getString(0));
+            }
+            cursor.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return courses;
+    }
+
+    public ArrayList<String> getUserData(String name){
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + USERNAME + " =?", new String[]{name});
         ArrayList<String> userData = new ArrayList<>();
 
         if(cursor.moveToFirst()){
             for(int i=0;i<7;i++){
-                String str = cursor.getString(i);
-                if (str.equals(""))
-                    userData.add("Unkown");
-                else
-                    userData.add(str);
+                userData.add(cursor.getString(i));
             }
         }
+        cursor.close();
         return userData;
     }
 
@@ -101,6 +170,18 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         contentValues.put(name, value);
 
         database.update(TABLE_NAME, contentValues, USERNAME + " ='" + username + "'", null);
+    }
+
+    public void insertBook(String[] book){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("isbn", book[0]);
+        contentValues.put("author", book[1]);
+        contentValues.put("title", book[2]);
+        contentValues.put("version", book[3]);
+        contentValues.put("year", book[4]);
+        contentValues.put("course", book[5]);
+        database.insert(TABLE_NAME1, null, contentValues);
     }
 
     public void deleteUser(String username){
@@ -137,5 +218,11 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         int count = cursor.getCount();
         cursor.close();
         return count > 0;
+    }
+
+    public Boolean isBooksEmpty(){
+        SQLiteDatabase database = this.getReadableDatabase();
+        return DatabaseUtils.queryNumEntries(database, TABLE_NAME1) == 0;
+
     }
 }

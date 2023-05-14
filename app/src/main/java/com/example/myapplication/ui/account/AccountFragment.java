@@ -1,6 +1,5 @@
 package com.example.myapplication.ui.account;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,17 +11,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.ChangePassword;
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.MainActivity;
-import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.UpdateAccount;
 import com.example.myapplication.databinding.FragmentAccountBinding;
-import com.example.myapplication.ui.updateAccount.UpdateAccountFragment;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -58,7 +53,7 @@ public class AccountFragment extends Fragment {
         year = (TextView) root.findViewById(R.id.year);
         email = (TextView) root.findViewById(R.id.email);
 
-        userData = dataBaseActivity.getData(userName);
+        userData = dataBaseActivity.getUserData(userName);
 
         fullname.setText("Full name: " + userData.get(2));
         studenNumber.setText("Student number: " + userData.get(3));
