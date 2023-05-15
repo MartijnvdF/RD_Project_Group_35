@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class UpdateAccount extends AppCompatActivity {
                     dataBaseActivity.updateData(userName, "email", uEmail);
                 }
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }
@@ -89,7 +90,7 @@ public class UpdateAccount extends AppCompatActivity {
         cancelupdatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }

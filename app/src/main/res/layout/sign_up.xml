@@ -32,20 +32,23 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/username1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/username1"
                     android:layout_below="@id/signup1"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
-                    android:hint="Username"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:layout_margin="10dp"
-                    android:padding="13dp"
-                    android:textSize="25sp"
                     android:drawableStart="@drawable/baseline_person_24"
-                    android:drawablePadding="20dp"/>
+                    android:drawablePadding="20dp"
+                    android:hint="Username"
+                    android:padding="13dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="25sp" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -81,20 +84,23 @@
                     android:inputType="textPassword"/>
 
                 <EditText
+                    android:id="@+id/major"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/major"
                     android:layout_below="@id/confirm_password1"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
-                    android:hint="Major"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:layout_margin="10dp"
-                    android:padding="13dp"
-                    android:textSize="25sp"
                     android:drawableStart="@drawable/baseline_school_24"
-                    android:drawablePadding="20dp" />
+                    android:drawablePadding="20dp"
+                    android:hint="Major"
+                    android:padding="13dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="25sp" />
 
                 <EditText
                     android:layout_width="match_parent"
