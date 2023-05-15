@@ -13,11 +13,15 @@ import android.widget.EditText;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+
 public class UpdateAccount extends AppCompatActivity {
 
     MaterialButton uupdatebtn, cancelupdatebtn;
     EditText fullname, studentNumber, major, year, email;
     DataBaseActivity dataBaseActivity;
+    ArrayList<String> user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +30,27 @@ public class UpdateAccount extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("Username", "");
+        dataBaseActivity = new DataBaseActivity(this);
+        user = dataBaseActivity.getUserData(userName);
 
         uupdatebtn = (MaterialButton) findViewById(R.id.uupdateaccountbtn);
         cancelupdatebtn = (MaterialButton) findViewById(R.id.cancelUpdate);
 
         fullname = findViewById(R.id.ufull_name);
-        studentNumber = findViewById(R.id.ustudentNumber);
-        major = findViewById(R.id.uMajor);
-        year = findViewById(R.id.uYear);
-        email = findViewById(R.id.uEmail);
+        fullname.setText(user.get(2));
 
-        dataBaseActivity = new DataBaseActivity(this);
+        studentNumber = findViewById(R.id.ustudentNumber);
+        if(user.get(3).equals(""))
+            studentNumber.setText(user.get(3));
+
+        major = findViewById(R.id.uMajor);
+        major.setText(user.get(4));
+
+        year = findViewById(R.id.uYear);
+        year.setText(user.get(5));
+
+        email = findViewById(R.id.uEmail);
+        email.setText(user.get(6));
 
         uupdatebtn.setOnClickListener(new View.OnClickListener() {
             @Override

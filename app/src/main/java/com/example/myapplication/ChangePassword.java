@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.ui.account.AccountFragment;
 import com.google.android.material.button.MaterialButton;
 
 public class ChangePassword extends AppCompatActivity {
@@ -57,7 +58,7 @@ public class ChangePassword extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), AccountFragment.class);
                 startActivity(intent);
                 finish();
             }

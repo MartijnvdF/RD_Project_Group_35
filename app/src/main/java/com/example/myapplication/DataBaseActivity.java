@@ -27,8 +27,14 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     public static final String FULL_NAME = "fullname";
     public static final String STUDENT_NUMBER = "studentnumber";
     public static final String MAJOR = "major";
-    public static final String YEAR = "year";
+    public static final String YEAR_USER = "year";
     public static final String EMAIL = "email";
+    public static final String ISBN = "isbn";
+    public static final String AUTHOR = "author";
+    public static final String TITLE = "title";
+    public static final String VERSION = "version";
+    public static final String YEAR_BOOK = "year";
+    public static final String COURSE = "course";
 
 
 
@@ -61,7 +67,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                 .append(" TEXT, ")
                 .append(MAJOR)
                 .append(" TEXT, ")
-                .append(YEAR)
+                .append(YEAR_USER)
                 .append(" TEXT, ")
                 .append(EMAIL)
                 .append(" TEXT)");
@@ -71,17 +77,18 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                 .append("CREATE TABLE ")
                 .append(TABLE_NAME1)
                 .append("(")
-                .append("isbn")
+                //.append()
+                .append(ISBN)
                 .append(" TEXT PRIMARY KEY, ")
-                .append("author")
+                .append(AUTHOR)
                 .append(" TEXT, ")
-                .append("title")
+                .append(TITLE)
                 .append(" TEXT , ")
-                .append("version")
+                .append(VERSION)
                 .append(" TEXT, ")
-                .append("year")
+                .append(YEAR_BOOK)
                 .append(" TEXT, ")
-                .append("course")
+                .append(COURSE)
                 .append(" TEXT)");
 
         database.execSQL(sql.toString());
@@ -110,12 +117,12 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                     continue;
                 }
                 ContentValues contentValues = new ContentValues();
-                contentValues.put("isbn", columns[0].trim());
-                contentValues.put("author", columns[1].trim());
-                contentValues.put("title", columns[2].trim());
-                contentValues.put("version", columns[3].trim());
-                contentValues.put("year", columns[4].trim());
-                contentValues.put("course", columns[5].trim());
+                contentValues.put(ISBN, columns[0].trim());
+                contentValues.put(AUTHOR, columns[1].trim());
+                contentValues.put(TITLE, columns[2].trim());
+                contentValues.put(VERSION, columns[3].trim());
+                contentValues.put(YEAR_BOOK, columns[4].trim());
+                contentValues.put(COURSE, columns[5].trim());
                 database.insert(TABLE_NAME1, null, contentValues);
             }
         } catch (IOException e) {
