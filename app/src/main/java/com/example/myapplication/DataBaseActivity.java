@@ -145,7 +145,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         ArrayList<String> courses = new ArrayList<>();
 
         try{
-            Cursor cursor = database.rawQuery("SELECT course FROM " + TABLE_NAME1, null);
+            Cursor cursor = database.rawQuery("SELECT DISTINCT course FROM " + TABLE_NAME1, null);
             while (cursor.moveToNext()){
                 courses.add(cursor.getString(0));
             }
