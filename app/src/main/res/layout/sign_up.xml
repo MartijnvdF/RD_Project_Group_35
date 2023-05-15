@@ -176,7 +176,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toEndOf="@+id/signupbtn"
-        android:backgroundTint="#A4D2FC"
+        android:backgroundTint="#5766ED"
         android:text="Cancel"
         android:textColor="@color/black"
         android:textSize="20sp"
