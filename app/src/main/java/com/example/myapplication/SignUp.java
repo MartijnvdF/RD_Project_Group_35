@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText username, password, confirmPassword;
+    EditText username, password, confirmPassword, fullname, email, major, year;
     MaterialButton signUpBtn, cancelBtn;
     DataBaseActivity dataBaseActivity;
 
@@ -24,9 +24,13 @@ public class SignUp extends AppCompatActivity {
         username = findViewById(R.id.username1);
         password = findViewById(R.id.password1);
         confirmPassword = findViewById(R.id.confirm_password1);
+        fullname = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        major = findViewById(R.id.major);
+        year = findViewById(R.id.year);
 
-        signUpBtn = findViewById(R.id.signUpBtn1);
-        cancelBtn =  findViewById(R.id.cancel_button1);
+        signUpBtn = findViewById(R.id.signupbtn);
+        cancelBtn =  findViewById(R.id.cancelsignup);
 
         dataBaseActivity = new DataBaseActivity(this);
 
@@ -34,14 +38,20 @@ public class SignUp extends AppCompatActivity {
             String user = username.getText().toString();
             String pw = password.getText().toString();
             String cpw = confirmPassword.getText().toString();
+            String fn = fullname.getText().toString();
+            String em = email.getText().toString();
+            String mj = major.getText().toString();
+            String yr = year.getText().toString();
 
-            if(user.equals("")||pw.equals("")||cpw.equals("")) {
+
+
+            if(user.equals("")||pw.equals("")||cpw.equals("")||fn.equals("")||em.equals("")||mj.equals("")||yr.equals("")) {
                 Toast.makeText(SignUp.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             }else{
                 if(pw.equals(cpw)){
                     Boolean checkUser = dataBaseActivity.checkUsername(user);
                     if(!checkUser){
-                        Boolean insert = dataBaseActivity.insertUser(user, pw);
+                        Boolean insert = dataBaseActivity.insertUser(user, pw, fn, em, mj, yr);
                         if(insert){
                             Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));

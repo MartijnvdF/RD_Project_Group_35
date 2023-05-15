@@ -189,16 +189,16 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         database.delete(TABLE_NAME, USERNAME + " ='" + username + "'", null);
     }
 
-    public Boolean insertUser(String username, String password){
+    public Boolean insertUser(String username, String password, String fullname, String email, String major, String year){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", password);
-        contentValues.put("fullname", "");
+        contentValues.put("fullname", fullname);
         contentValues.put("studentnumber", "");
-        contentValues.put("major", "");
-        contentValues.put("year", "");
-        contentValues.put("email", "");
+        contentValues.put("major", major);
+        contentValues.put("year", year);
+        contentValues.put("email", email);
 
         long result = database.insert(TABLE_NAME, null, contentValues);
         return result != -1;
