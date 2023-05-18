@@ -42,7 +42,7 @@ public class UpdateAccount extends AppCompatActivity {
 
         studentNumber = findViewById(R.id.ustudentNumber);
         if(!user.get(3).equals(""))
-            studentNumber.setText(user.get(3));
+            studentNumber.setHint(user.get(3));
 
         major = findViewById(R.id.uMajor);
         major.setHint(user.get(4));

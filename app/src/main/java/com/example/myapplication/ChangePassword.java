@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.ui.account.AccountFragment;
+import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.material.button.MaterialButton;
 
 public class ChangePassword extends AppCompatActivity {
@@ -49,8 +51,14 @@ public class ChangePassword extends AppCompatActivity {
                         Toast.makeText(ChangePassword.this, "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
                     }
                 }
-                Intent intent = new Intent(getApplicationContext(), AccountFragment.class);
-                startActivity(intent);
+
+                NavController navController = Navigation.findNavController(ChangePassword.this, R.id.nav_host_fragment_content_main);
+                navController.navigateUp();
+                navController.navigate(R.id.nav_account);
+
+                //Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
+                //startActivity(intent);
+
                 finish();
             }
         });
@@ -58,7 +66,7 @@ public class ChangePassword extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AccountFragment.class);
+                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }
