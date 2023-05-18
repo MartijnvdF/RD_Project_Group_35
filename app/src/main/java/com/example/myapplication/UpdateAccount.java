@@ -38,20 +38,20 @@ public class UpdateAccount extends AppCompatActivity {
         cancelupdatebtn = (MaterialButton) findViewById(R.id.cancelUpdate);
 
         fullname = findViewById(R.id.ufull_name);
-        fullname.setText(user.get(2));
+        fullname.setHint(user.get(2));
 
         studentNumber = findViewById(R.id.ustudentNumber);
-        if(user.get(3).equals(""))
+        if(!user.get(3).equals(""))
             studentNumber.setText(user.get(3));
 
         major = findViewById(R.id.uMajor);
-        major.setText(user.get(4));
+        major.setHint(user.get(4));
 
         year = findViewById(R.id.uYear);
-        year.setText(user.get(5));
+        year.setHint(user.get(5));
 
         email = findViewById(R.id.uEmail);
-        email.setText(user.get(6));
+        email.setHint(user.get(6));
 
         uupdatebtn.setOnClickListener(new View.OnClickListener() {
             @Override

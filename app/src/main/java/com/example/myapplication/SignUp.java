@@ -55,7 +55,7 @@ public class SignUp extends AppCompatActivity {
                         if(insert){
                             Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));
-                            finish();;
+                            finish();
                         }else{
                             Toast.makeText(SignUp.this,"SIGN UP FAILED",Toast.LENGTH_SHORT).show();
                         }
@@ -71,6 +71,7 @@ public class SignUp extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(SignUp.this, MainActivity.class));
                 finish();
             }
         });

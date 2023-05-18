@@ -49,7 +49,7 @@ public class ChangePassword extends AppCompatActivity {
                         Toast.makeText(ChangePassword.this, "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
                     }
                 }
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), AccountFragment.class);
                 startActivity(intent);
                 finish();
             }

@@ -107,8 +107,6 @@ public class HomeFragment extends Fragment {
             Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
             e.printStackTrace();
         }
-
-
     }
 
     @Override
