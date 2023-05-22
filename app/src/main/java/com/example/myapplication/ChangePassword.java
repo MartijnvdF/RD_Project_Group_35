@@ -52,12 +52,13 @@ public class ChangePassword extends AppCompatActivity {
                     }
                 }
 
+                /*
                 NavController navController = Navigation.findNavController(ChangePassword.this, R.id.nav_host_fragment_content_main);
                 navController.navigateUp();
-                navController.navigate(R.id.nav_account);
+                navController.navigate(R.id.nav_account);*/
 
-                //Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getBaseContext(), FragmentAccountBinding.class);
+                startActivity(intent);
 
                 finish();
             }
@@ -66,7 +67,7 @@ public class ChangePassword extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
+                Intent intent = new Intent(getBaseContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }

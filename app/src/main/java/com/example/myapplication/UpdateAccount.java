@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -79,7 +81,7 @@ public class UpdateAccount extends AppCompatActivity {
                     dataBaseActivity.updateData(userName, "email", uEmail);
                 }
 
-                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
+                Intent intent = new Intent(getBaseContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }
@@ -90,7 +92,7 @@ public class UpdateAccount extends AppCompatActivity {
         cancelupdatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FragmentAccountBinding.class);
+                Intent intent = new Intent(getBaseContext(), FragmentAccountBinding.class);
                 startActivity(intent);
                 finish();
             }
