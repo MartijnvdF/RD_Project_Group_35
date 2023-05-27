@@ -179,15 +179,15 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         database.update(TABLE_NAME, contentValues, USERNAME + " ='" + username + "'", null);
     }
 
-    public void insertBook(String[] book){
+    public void insertBook(String isbn, String author, String title, String version, String year, String course){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("isbn", book[0]);
-        contentValues.put("author", book[1]);
-        contentValues.put("title", book[2]);
-        contentValues.put("version", book[3]);
-        contentValues.put("year", book[4]);
-        contentValues.put("course", book[5]);
+        contentValues.put("isbn", isbn);
+        contentValues.put("author", author);
+        contentValues.put("title", title);
+        contentValues.put("version", version);
+        contentValues.put("year", year);
+        contentValues.put("course", course);
         database.insert(TABLE_NAME1, null, contentValues);
     }
 
@@ -214,6 +214,14 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     public Boolean checkUsername(String username) {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + USERNAME + " = ?", new String[]{username});
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+
+    public Boolean checkISBN(String isbn){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM" + TABLE_NAME1 + " WHERE " + isbn + " = ?", new String[]{isbn});
         int count = cursor.getCount();
         cursor.close();
         return count > 0;

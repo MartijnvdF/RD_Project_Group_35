@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/update">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:id="@+id/scroll">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/purple_700">
+
+                <TextView
+                    android:id="@+id/add_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="Add book"
+                    android:textColor="@color/black"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/isbn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/add_book"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="20dp"
+                    android:hint="ISBN"
+                    android:padding="13dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="25sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title"
+                    android:layout_below="@id/isbn"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Title"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="20dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/author"
+                    android:layout_below="@id/title"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Author"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="20dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/version"
+                    android:layout_below="@id/author"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Version"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_lock_24"
+                    android:drawablePadding="20dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/year"
+                    android:layout_below="@id/version"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Year"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_calendar_month_24"
+                    android:drawablePadding="20dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course"
+                    android:layout_below="@id/year"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Course"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_email_24"
+                    android:drawablePadding="20dp" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_book_button"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@id/scroll"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#5766ED"
+        android:text="ADD"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="25dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_add_book"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@id/scroll"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/add_book_button"
+        android:backgroundTint="#5766ED"
+        android:text="CANCEL"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="25dp" />
+</RelativeLayout>
