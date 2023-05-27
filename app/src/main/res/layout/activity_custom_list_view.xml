@@ -12,8 +12,9 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/roundstyle"
-        android:backgroundTint="#A4D2FC"
+        android:backgroundTint="@color/light_blue"
         android:gravity="center"
+        android:textColor="@color/black"
         android:padding="20dp"
         android:text="@string/my_text"
         android:textSize="25sp" />

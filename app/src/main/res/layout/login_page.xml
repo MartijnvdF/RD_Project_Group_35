@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/purple_700"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_below="@+id/booksPic"
         android:gravity="center"
         android:text="Sign in"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:textSize="35sp"
         android:textStyle="bold" />
 

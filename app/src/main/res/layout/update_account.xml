@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/update">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/updateaccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="50dp"
+                android:gravity="center"
+                android:text="Update Account"
+                style="@style/Theme.AppCompat"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ufull_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/updateaccount"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_person_24"
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="#A5D2FC"
+                android:drawablePadding="20dp"
+                android:hint="Full Name"
+                android:padding="13dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="25sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ustudentNumber"
+                android:layout_below="@id/ufull_name"
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="#A5D2FC"
+                android:hint="Student Number"
+                android:textColorHint="@color/black"
+                android:drawableStart="@drawable/baseline_person_24"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:padding="13dp"
+                android:textSize="25sp"
+                android:drawablePadding="20dp"/>
+
+            <EditText
+                android:id="@+id/uMajor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ustudentNumber"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/roundstyle"
+                android:drawableStart="@drawable/baseline_school_24"
+                android:backgroundTint="#A5D2FC"
+                android:drawablePadding="20dp"
+                android:hint="Major"
+                android:padding="13dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="25sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/uYear"
+                android:layout_below="@id/uMajor"
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="#A5D2FC"
+                android:hint="Year"
+                android:textColorHint="@color/black"
+                android:drawableStart="@drawable/baseline_calendar_month_24"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:padding="13dp"
+                android:textSize="25sp"
+                android:drawablePadding="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/uEmail"
+                android:layout_below="@id/uYear"
+                android:background="@drawable/roundstyle"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:backgroundTint="#A5D2FC"
+                android:hint="Email"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:padding="13dp"
+                android:textSize="25sp"
+                android:drawablePadding="20dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/uupdateaccountbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_below="@id/uEmail"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#5766ED"
+                android:text="Update"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:cornerRadius="25dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_below="@id/uEmail"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/uupdateaccountbtn"
+                android:backgroundTint="#A4D2FC"
+                android:text="cancel"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:cornerRadius="25dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

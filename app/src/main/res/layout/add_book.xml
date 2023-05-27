@@ -18,7 +18,7 @@
                 android:backgroundTint="@color/purple_700">
 
                 <TextView
-                    android:id="@+id/signup1"
+                    android:id="@+id/add_book"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -26,16 +26,16 @@
                     android:layout_marginEnd="50dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="center"
-                    android:text="Sign Up"
+                    android:text="Add book"
                     style="@style/Theme.AppCompat"
                     android:textSize="35dp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/username1"
+                    android:id="@+id/isbn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/signup1"
+                    android:layout_below="@id/add_book"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
@@ -44,7 +44,7 @@
                     android:backgroundTint="#A5D2FC"
                     android:drawableStart="@drawable/baseline_person_24"
                     android:drawablePadding="20dp"
-                    android:hint="Username"
+                    android:hint="ISBN"
                     android:padding="13dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -53,11 +53,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/name"
-                    android:layout_below="@id/username1"
+                    android:id="@+id/title"
+                    android:layout_below="@id/isbn"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
-                    android:hint="Full name"
+                    android:hint="Title"
                     android:textColorHint="@color/black"
                     android:textColor="@color/black"
                     android:layout_margin="10dp"
@@ -69,61 +69,40 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/password1"
-                    android:layout_below="@id/name"
+                    android:id="@+id/author"
+                    android:layout_below="@id/title"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
-                    android:hint="Password"
+                    android:hint="Author"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="20dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/version"
+                    android:layout_below="@id/author"
+                    android:background="@drawable/roundstyle"
+                    android:backgroundTint="#A5D2FC"
+                    android:hint="Version"
                     android:textColorHint="@color/black"
                     android:textColor="@color/black"
                     android:layout_margin="10dp"
                     android:padding="13dp"
                     android:textSize="25sp"
                     android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="20dp"
-                    android:inputType="textPassword"/>
-
-                <EditText
-                    android:id="@+id/major"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/confirm_password1"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/roundstyle"
-                    android:backgroundTint="#A5D2FC"
-                    android:drawableStart="@drawable/baseline_school_24"
-                    android:drawablePadding="20dp"
-                    android:hint="Major"
-                    android:padding="13dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="25sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/confirm_password1"
-                    android:layout_below="@id/password1"
-                    android:background="@drawable/roundstyle"
-                    android:backgroundTint="#A5D2FC"
-                    android:hint="Confirm password"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:layout_margin="10dp"
-                    android:padding="13dp"
-                    android:textSize="25sp"
-                    android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="20dp"
-                    android:inputType="textPassword"/>
+                    android:drawablePadding="20dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/year"
-                    android:layout_below="@id/major"
+                    android:layout_below="@id/version"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
                     android:hint="Year"
@@ -136,23 +115,20 @@
                     android:drawablePadding="20dp" />
 
                 <EditText
-                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/course"
                     android:layout_below="@id/year"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@drawable/roundstyle"
                     android:backgroundTint="#A5D2FC"
-                    android:drawableStart="@drawable/baseline_email_24"
-                    android:drawablePadding="20dp"
-                    android:hint="Email"
-                    android:padding="13dp"
-                    android:textColor="@color/black"
+                    android:hint="Course"
                     android:textColorHint="@color/black"
-                    android:textSize="25sp" />
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:padding="13dp"
+                    android:textSize="25sp"
+                    android:drawableStart="@drawable/baseline_email_24"
+                    android:drawablePadding="20dp" />
 
 
             </RelativeLayout>
@@ -160,7 +136,7 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signupbtn"
+        android:id="@+id/add_book_button"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_below="@id/scroll"
@@ -169,13 +145,13 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#5766ED"
-        android:text="Sign up"
+        android:text="ADD"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:cornerRadius="25dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancelsignup"
+        android:id="@+id/cancel_add_book"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_below="@id/scroll"
@@ -184,9 +160,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_toEndOf="@+id/signupbtn"
-        android:backgroundTint="#5766ED"
-        android:text="Cancel"
+        android:layout_toEndOf="@+id/add_book_button"
+        android:backgroundTint="@color/light_blue"
+        android:text="CANCEL"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:cornerRadius="25dp" />

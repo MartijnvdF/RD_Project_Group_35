@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Theme.AppCompat"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="Choose Course"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,10 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/customListView"
-        android:background="@color/white"
         android:layout_marginTop="100dp"
         android:dividerHeight="10dp"
-        android:divider="@color/white"
+        android:divider="@android:color/transparent"
         android:layout_marginBottom="10dp"
         />
 
