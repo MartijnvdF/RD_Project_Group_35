@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.books.book_page;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
 import java.io.BufferedReader;
@@ -37,6 +39,7 @@ public class HomeFragment extends Fragment {
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
     DataBaseActivity dataBaseActivity;
+
 
 
 
@@ -81,6 +84,9 @@ public class HomeFragment extends Fragment {
                 //startActivity(intent);
 
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
+                Intent intent = new Intent(getContext(), book_page.class);
+                intent.putExtra("course", booklist1.get(i));
+                startActivity(intent);
             }
         });
 
