@@ -19,33 +19,76 @@
         android:src="@drawable/account" />
 
     <TextView
-        android:id="@+id/accountText"
+        android:id="@+id/accountInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/accountPic"
         android:layout_marginStart="10dp"
         android:gravity="center"
         android:text="Account Info"
-        style="@style/Theme.AppCompat"
+        android:textColor="@color/black"
         android:textSize="35sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/account_info"
-        style="@style/Theme.AppCompat"
-        android:layout_below="@+id/accountText"/>
+        android:id="@+id/full_name"
+        android:textColor="@color/black"
+        android:layout_below="@+id/accountInfo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:id="@+id/studentNumber"
+        android:textColor="@color/black"
+        android:layout_below="@+id/full_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:id="@+id/major"
+        android:textColor="@color/black"
+        android:layout_below="@+id/studentNumber"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:id="@+id/year"
+        android:textColor="@color/black"
+        android:layout_below="@+id/major"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:id="@+id/email"
+        android:textColor="@color/black"
+        android:layout_below="@+id/year"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateaccountbtn"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#A4D2FC"
+        android:text="update account"
+        android:textColor="@color/black"
+        android:layout_below="@+id/email"
+        app:cornerRadius="25dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/change_password"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="#A4D2FC"
         android:text="change password"
         android:textColor="@color/black"
-        android:layout_below="@+id/account_info"
+        android:layout_below="@+id/updateaccountbtn"
         app:cornerRadius="25dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -53,7 +96,7 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="#A4D2FC"
         android:text="delete account"
         android:textColor="@color/black"
         android:layout_below="@+id/change_password"

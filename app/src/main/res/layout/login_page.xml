@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/purple_700"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_below="@+id/booksPic"
         android:gravity="center"
         android:text="Sign in"
-        style="@style/Theme.AppCompat"
+        android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold" />
 
@@ -22,18 +21,18 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:layout_below="@id/signin"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/roundstyle"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="#A5D2FC"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="20dp"
         android:hint="Username"
         android:padding="13dp"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textColorHint="@color/black" />
 
@@ -47,7 +46,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/roundstyle"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="#A5D2FC"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="20dp"
         android:hint="Password"
@@ -95,7 +94,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/purple_main"
+        android:backgroundTint="#5766ED"
         android:text="Sign in"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -109,7 +108,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="#A4D2FC"
         android:text="Sign Up"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -121,7 +120,7 @@
         android:layout_height="67dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="@color/purple_main"
+        android:background="#5766ED"
         android:gravity="center_vertical"
         android:paddingStart="5sp"
         android:text="Don't have an account?"

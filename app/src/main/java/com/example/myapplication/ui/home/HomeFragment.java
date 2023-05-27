@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
     GridView gridView;
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
+    DataBaseActivity dataBaseActivity;
 
 
 
@@ -47,15 +48,25 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
 
+        dataBaseActivity = new DataBaseActivity(getContext());
+
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String username = "Welcome " + sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("Username", "");
+
+        //display fullname
+        String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);
 
         //display username
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        getCourses();
+        //getCourses();
+        booklist1 = dataBaseActivity.getBooksData();
+
+        if(dataBaseActivity.isBooksEmpty())
+            dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books));
+
 
 
         listView = (ListView) root.findViewById(R.id.customListView);
@@ -65,6 +76,10 @@ public class HomeFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //TODO: go to new page to fill in new book using database.insertBook
+                //Intent intent = new Intent();
+                //startActivity(intent);
+
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
             }
         });
@@ -92,8 +107,6 @@ public class HomeFragment extends Fragment {
             Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
             e.printStackTrace();
         }
-
-
     }
 
     @Override

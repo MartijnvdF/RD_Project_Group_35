@@ -1,5 +1,6 @@
-package com.example.myapplication.ui.settings;
+package com.example.myapplication.ui.updateAccount;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,20 +11,26 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
-import com.example.myapplication.databinding.FragmentSettingsBinding;
+import com.google.android.material.button.MaterialButton;
 
 
-public class SettingsFragment extends Fragment {
-    private FragmentSettingsBinding binding;
+public class UpdateAccountFragment extends Fragment {
+
+    private UpdateAccountFragment binding;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View root = inflater.inflate(R.layout.update_account, container, false);
+
+
+
 
 
         return root;

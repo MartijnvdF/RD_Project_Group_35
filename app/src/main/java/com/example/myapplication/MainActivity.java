@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 public class MainActivity extends AppCompatActivity {
     MaterialButton loginBtn, signUpBtn;
@@ -41,15 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         dataBaseActivity = new DataBaseActivity(this);
 
-        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-
-        boolean darkMode = sharedPreferences.getBoolean("dark", false);
-        if(darkMode){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-
-
-
         loginBtn.setOnClickListener(view -> {
 
             String user = username.getText().toString();
@@ -58,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
             if(user.equals("")||pw.equals("")) {
                 Toast.makeText(MainActivity.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             } else {
-                Boolean checkuserpass = dataBaseActivity.checkusernamepassword(user, pw);
+                Boolean checkuserpass = dataBaseActivity.checkUsernamePassword(user, pw);
                 if (checkuserpass) {
                     Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
                     //put username into sharedpref for other files to use
+                    SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("Username", user);
                     editor.apply();
@@ -93,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SignUp.class));
+                finish();
             }
         });
     }
