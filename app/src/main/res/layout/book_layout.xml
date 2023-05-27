@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/isbn_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="isbn_placeholder"
+
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <TextView
+        android:id="@+id/author_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="author_placeholder"
+        android:layout_below="@+id/isbn_book_page"/>
+
+    <TextView
+        android:id="@+id/title_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id_placeholder"
+        android:layout_below="@+id/author_book_page"/>
+
+    <TextView
+        android:id="@+id/version_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="version_placeholder"
+        android:layout_below="@+id/title_book_page"/>
+
+    <TextView
+        android:id="@+id/year_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="year_placeholder"
+        android:layout_below="@id/version_book_page"/>
+
+    <TextView
+        android:id="@+id/link_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="link_placeholder"
+        android:layout_below="@id/year_book_page"/>
+
+
+
+</RelativeLayout>
