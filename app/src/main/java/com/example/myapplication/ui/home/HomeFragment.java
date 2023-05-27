@@ -17,10 +17,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,6 +40,7 @@ public class HomeFragment extends Fragment {
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
     DataBaseActivity dataBaseActivity;
+    FloatingActionButton floatingActionButton;
 
 
 
@@ -61,13 +65,15 @@ public class HomeFragment extends Fragment {
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
+        floatingActionButton = (FloatingActionButton) root.findViewById(R.id.fab);
+
         //getCourses();
         booklist1 = dataBaseActivity.getBooksData();
 
         if(dataBaseActivity.isBooksEmpty())
             dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books));
 
-
+        NavController navController = NavHostFragment.findNavController(this);
 
         listView = (ListView) root.findViewById(R.id.customListView);
         listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
@@ -81,6 +87,13 @@ public class HomeFragment extends Fragment {
                 //startActivity(intent);
 
                 Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
+            }
+        });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_add_book);
             }
         });
 

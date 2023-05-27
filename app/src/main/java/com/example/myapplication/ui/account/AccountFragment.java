@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.ChangePassword;
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.UpdateAccount;
 import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.material.button.MaterialButton;
 
@@ -61,19 +61,19 @@ public class AccountFragment extends Fragment {
         year.setText("Year: " + userData.get(5));
         email.setText("Email: " + userData.get(6));
 
+        NavController navController = NavHostFragment.findNavController(this);
+
         changePW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ChangePassword.class);
-                startActivity(intent);
+                navController.navigate(R.id.nav_change_password);
             }
         });
 
         updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), UpdateAccount.class);
-                startActivity(intent);
+                navController.navigate(R.id.nav_update_account);
             }
         });
 

@@ -49,8 +49,6 @@ public class MainActivity3 extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
-        //binding.appBarMain.fab.setOnClickListener(view ->);
-
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -63,14 +61,6 @@ public class MainActivity3 extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        floatingActionButton = findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity3.this, AddBook.class));
-                finish();
-            }
-        });
 
         //loggin out
         MenuItem logoutItem = navigationView.getMenu().findItem(R.id.logout);
