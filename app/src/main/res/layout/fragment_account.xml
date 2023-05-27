@@ -26,7 +26,7 @@
         android:layout_marginStart="10dp"
         android:gravity="center"
         android:text="Account Info"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:textSize="35sp" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:id="@+id/full_name"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:layout_below="@+id/accountInfo"/>
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:id="@+id/studentNumber"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:layout_below="@+id/full_name"/>
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:id="@+id/major"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:layout_below="@+id/studentNumber"/>
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:id="@+id/year"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:layout_below="@+id/major"/>
 
     <TextView
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:id="@+id/email"
-        android:textColor="@color/black"
+        style="@style/Theme.AppCompat"
         android:layout_below="@+id/year"/>
 
     <com.google.android.material.button.MaterialButton

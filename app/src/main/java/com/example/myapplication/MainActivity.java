@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class MainActivity extends AppCompatActivity {
     MaterialButton loginBtn, signUpBtn;
@@ -39,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         dataBaseActivity = new DataBaseActivity(this);
 
+        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+
+        boolean darkMode = sharedPreferences.getBoolean("dark", false);
+        if(darkMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
         loginBtn.setOnClickListener(view -> {
 
             String user = username.getText().toString();
@@ -52,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
                     //put username into sharedpref for other files to use
-                    SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("Username", user);
                     editor.apply();
