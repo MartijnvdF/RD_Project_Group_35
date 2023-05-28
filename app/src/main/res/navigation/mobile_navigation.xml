@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_add_book"
             app:destination="@id/nav_add_book" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_book"
+            app:destination="@id/nav_book" />
     </fragment>
 
     <fragment
@@ -38,6 +41,11 @@
         android:name="com.example.myapplication.ui.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_book"
+        android:name="com.example.myapplication.ui.books.BookPage"
+        tools:layout="@layout/activity_book_page"/>
 
     <fragment
         android:id="@+id/nav_add_book"

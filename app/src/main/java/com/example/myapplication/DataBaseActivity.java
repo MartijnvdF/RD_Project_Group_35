@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.myapplication.ui.books.Book;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -168,6 +170,24 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         }
         cursor.close();
         return userData;
+    }
+
+    public ArrayList<Book> getBookInfo(String course){
+        SQLiteDatabase database = this.getReadableDatabase();
+        ArrayList<Book> books = new ArrayList<>();
+
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE " + COURSE + " =?", new String[]{course});
+            while(cursor.moveToNext()){
+                Book book = new Book(cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6), "");
+                books.add(book);
+            }
+            cursor.close();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return books;
     }
 
     public void updateData(String username, String name, String value){

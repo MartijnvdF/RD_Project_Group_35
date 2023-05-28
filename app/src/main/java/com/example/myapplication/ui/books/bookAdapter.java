@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.books.Book;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
         //Set the data for the text view fields
         bookISBN.setText("ISBN: " + book.get_isbn());
         bookAuthor.setText("Author: " + book.get_author());
-        bookTitle.setText("Title: " + book.get_title());
+        bookTitle.setText(book.get_title());
         bookVersion.setText("Version: " + book.get_version());
         bookYear.setText("Year: " + book.get_year());
         bookLink.setText("Link: " + book.get_link());

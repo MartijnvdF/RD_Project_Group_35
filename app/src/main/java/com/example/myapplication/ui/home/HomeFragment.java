@@ -23,7 +23,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.books.book_page;
+import com.example.myapplication.ui.books.BookPage;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -38,7 +38,6 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    GridView gridView;
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
     DataBaseActivity dataBaseActivity;
@@ -49,8 +48,6 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
@@ -81,18 +78,17 @@ public class HomeFragment extends Fragment {
         listView = (ListView) root.findViewById(R.id.customListView);
         listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
 
-        //TO DO: redirect to another page using position
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO: go to new page to fill in new book using database.insertBook
-                //Intent intent = new Intent();
-                //startActivity(intent);
 
-                Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
-                Intent intent = new Intent(getContext(), book_page.class);
-                intent.putExtra("course", booklist1.get(i));
-                startActivity(intent);
+                //Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
+                Bundle bundle = new Bundle();
+                bundle.putString("course", booklist1.get(i));
+                navController.navigate(R.id.nav_book, bundle);
+                //Intent intent = new Intent(getContext(), book_page.class);
+                //intent.putExtra("course", booklist1.get(i));
+                //startActivity(intent);
             }
         });
 
