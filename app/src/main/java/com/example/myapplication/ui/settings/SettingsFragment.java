@@ -22,6 +22,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.example.myapplication.databinding.FragmentSettingsBinding;
 
 
