@@ -57,6 +57,7 @@ public class HomeFragment extends Fragment {
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("Username", "");
+        String year_user = sharedPreferences.getString("year_user", "");
 
         //display fullname
         String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);
@@ -67,11 +68,7 @@ public class HomeFragment extends Fragment {
 
         floatingActionButton = (FloatingActionButton) root.findViewById(R.id.fab);
 
-        //getCourses();
-        booklist1 = dataBaseActivity.getBooksData();
-
-        if(dataBaseActivity.isBooksEmpty())
-            dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books));
+        booklist1 = dataBaseActivity.getBooksData(year_user);
 
         NavController navController = NavHostFragment.findNavController(this);
 
@@ -81,14 +78,9 @@ public class HomeFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                //Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
                 Bundle bundle = new Bundle();
                 bundle.putString("course", booklist1.get(i));
                 navController.navigate(R.id.nav_book, bundle);
-                //Intent intent = new Intent(getContext(), book_page.class);
-                //intent.putExtra("course", booklist1.get(i));
-                //startActivity(intent);
             }
         });
 
@@ -100,28 +92,6 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
-    }
-
-    private void getCourses(){
-
-        InputStream inputStream = getResources().openRawResource(R.raw.books);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream, StandardCharsets.UTF_8)
-        );
-        String line = "";
-        try {
-            line = reader.readLine();
-            while((line = reader.readLine())!=null){
-                //split by ','
-                String[] info = line.split(";");
-
-                //read data
-                booklist1.add(info[5]);
-            }
-        } catch (IOException e) {
-            Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
-            e.printStackTrace();
-        }
     }
 
     @Override

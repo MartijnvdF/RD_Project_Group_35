@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.books;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,17 +25,18 @@ public class BookPage extends Fragment {
     bookAdapter adapter;
     ListView listView;
     DataBaseActivity dataBaseActivity;
+    String year_user;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_book_page, container, false);
 
         dataBaseActivity = new DataBaseActivity(getContext());
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        year_user = sharedPreferences.getString("year_user", "");
 
         listView = (ListView) view.findViewById(R.id.list_book_page);
-        //Book book_test = new Book("ISBN-978-0-134-67094-2", "Y. Daniel Liang","Introduction to Java Programming and Data Structures,Comprehensive Version", "twelfth edition","2021","Object Oriented Programming", "link_placeholder");
-        //bookArray.add(book_test);
-        bookArray = dataBaseActivity.getBookInfo(getArguments().getString("course"));
+        bookArray = dataBaseActivity.getBookInfo(getArguments().getString("course"), year_user);
         adapter = new bookAdapter(getContext(), bookArray);
 
         listView.setAdapter(adapter);

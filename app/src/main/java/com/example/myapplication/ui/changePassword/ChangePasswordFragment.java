@@ -57,12 +57,11 @@ public class ChangePasswordFragment extends Fragment {
                 }else{
                     if(uPassword.equals(uCPassword)){
                         dataBaseActivity.updateData(userName, "password", uPassword);
+                        navController.navigateUp();
                     }else{
                         Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
                     }
                 }
-                navController.navigateUp();
-                //navController.navigate(R.id.nav_account);
             }
         });
 

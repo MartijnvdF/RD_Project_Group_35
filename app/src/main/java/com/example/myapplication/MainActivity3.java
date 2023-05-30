@@ -38,7 +38,6 @@ import java.util.ArrayList;
 public class MainActivity3 extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

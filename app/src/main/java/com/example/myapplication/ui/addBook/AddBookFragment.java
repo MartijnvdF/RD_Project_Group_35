@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.addBook;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,8 @@ public class AddBookFragment extends Fragment {
         View root = binding.getRoot();
 
         NavController navController = NavHostFragment.findNavController(this);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        String year_user = sharedPreferences.getString("year_user", "");
 
         isbn = root.findViewById(R.id.isbn);
         title = root.findViewById(R.id.title);
@@ -73,8 +77,8 @@ public class AddBookFragment extends Fragment {
             String year_str = year.getText().toString();
             String course_str = course.getText().toString();
 
-            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity)){
-                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str);
+            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, year_user)){
+                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, year_user);
                 navController.navigateUp();
             } else {
                 Toast.makeText(getContext(), "Something went wrong. Try again", Toast.LENGTH_SHORT).show();
@@ -83,8 +87,8 @@ public class AddBookFragment extends Fragment {
         return root;
     }
 
-    public Boolean safeAddBook(String isbn, String title, String author, String version, String year, String course, DataBaseActivity dba){
-        return !dba.checkISBN(isbn) // check if the isbn does not already exist in the database
+    public Boolean safeAddBook(String isbn, String title, String author, String version, String year, String course, DataBaseActivity dba, String year_user){
+        return !dba.checkISBN(isbn, year_user) // check if the isbn does not already exist in the database
                 && (title != "" && author != "" && version != "" && year != "" && course != "") // check if all strings except isbn are non-empty
                 && Arrays.stream(courses).anyMatch(course::equals); // check if the given course is valid
     }
