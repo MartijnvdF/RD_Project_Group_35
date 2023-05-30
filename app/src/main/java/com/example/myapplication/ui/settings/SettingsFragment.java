@@ -69,7 +69,8 @@ public class SettingsFragment extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("Notification", b);
-
+                editor.apply();
+                /*
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
                 builder.setContentTitle("Notification");
                 builder.setContentText("New book has been added");
@@ -78,7 +79,7 @@ public class SettingsFragment extends Fragment {
                 builder.setPriority(NotificationCompat.PRIORITY_HIGH);
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
-                managerCompat.notify(1, builder.build());
+                managerCompat.notify(1, builder.build());*/
             }
         });
         return root;

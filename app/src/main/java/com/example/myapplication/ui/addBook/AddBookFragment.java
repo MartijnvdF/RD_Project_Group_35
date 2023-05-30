@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,7 +28,7 @@ import java.util.Arrays;
 
 public class AddBookFragment extends Fragment {
     private AddBookBinding binding;
-    MaterialButton addBookButton;
+    MaterialButton addBookButton, test;
 
     DataBaseActivity dataBaseActivity;
 
@@ -57,6 +60,7 @@ public class AddBookFragment extends Fragment {
         NavController navController = NavHostFragment.findNavController(this);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String year_user = sharedPreferences.getString("year_user", "");
+        boolean notification = sharedPreferences.getBoolean("Notification", false);
 
         isbn = root.findViewById(R.id.isbn);
         title = root.findViewById(R.id.title);
@@ -66,6 +70,7 @@ public class AddBookFragment extends Fragment {
         course = root.findViewById(R.id.course);
 
         addBookButton = (MaterialButton) root.findViewById(R.id.add_book_button);
+        test = (MaterialButton) root.findViewById(R.id.test);
 
         dataBaseActivity = new DataBaseActivity(getContext());
 
@@ -79,11 +84,28 @@ public class AddBookFragment extends Fragment {
 
             if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, year_user)){
                 dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, year_user);
+
                 navController.navigateUp();
             } else {
                 Toast.makeText(getContext(), "Something went wrong. Try again", Toast.LENGTH_SHORT).show();
             }
         });
+
+        test.setOnClickListener(view -> {
+            if(notification) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
+                builder.setContentTitle("Notification");
+                builder.setContentText("New book has been added");
+                builder.setSmallIcon(R.drawable.books);
+                builder.setAutoCancel(true);
+                builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
+                managerCompat.notify(1, builder.build());
+            }
+            navController.navigateUp();
+        });
+
         return root;
     }
 
