@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.myapplication.ui.books.Book;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +21,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     private static DataBaseActivity dataBaseActivity;
     public static final int DBVersion = 1;
     public static final String TABLE_NAME = "users";
-    public static final String TABLE_NAME1 = "books";
+    public static final String TABLE_NAME1 = "first";
 
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
@@ -91,6 +93,8 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                 .append(COURSE)
                 .append(" TEXT)");
 
+
+
         database.execSQL(sql.toString());
         database.execSQL(sql1.toString());
     }
@@ -102,7 +106,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         onCreate(database);
     }
 
-    public void fillBooksDatabase(InputStream inputStream){
+    public void fillBooksDatabase(InputStream inputStream, String year_user){
         SQLiteDatabase database = this.getWritableDatabase();
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line;
@@ -123,7 +127,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
                 contentValues.put(VERSION, columns[3].trim());
                 contentValues.put(YEAR_BOOK, columns[4].trim());
                 contentValues.put(COURSE, columns[5].trim());
-                database.insert(TABLE_NAME1, null, contentValues);
+                database.insert(year_user, null, contentValues);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,12 +144,12 @@ public class DataBaseActivity extends SQLiteOpenHelper{
 
     }
 
-    public ArrayList<String> getBooksData(){
+    public ArrayList<String> getBooksData(String table){
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<String> courses = new ArrayList<>();
 
         try{
-            Cursor cursor = database.rawQuery("SELECT DISTINCT course FROM " + TABLE_NAME1 + " ORDER BY course", null);
+            Cursor cursor = database.rawQuery("SELECT DISTINCT course FROM " + table + " ORDER BY course", null);
             while (cursor.moveToNext()){
                 courses.add(cursor.getString(0));
             }
@@ -170,6 +174,38 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         return userData;
     }
 
+    public ArrayList<Book> getBookInfo(String course, String table){
+        SQLiteDatabase database = this.getReadableDatabase();
+        ArrayList<Book> books = new ArrayList<>();
+
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM " + table + " WHERE " + COURSE + " =?", new String[]{course});
+            while(cursor.moveToNext()){
+                Book book = new Book(cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6), "");
+                books.add(book);
+            }
+            cursor.close();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return books;
+    }
+
+    public String getYearUser(String user){
+        SQLiteDatabase database = this.getReadableDatabase();
+        String year_user = "";
+        try {
+            Cursor cursor = database.rawQuery("SELECT " + YEAR_USER + " FROM " + TABLE_NAME + " WHERE " + USERNAME + " =?", new String[]{user});
+            cursor.moveToFirst();
+            year_user = cursor.getString(0);
+            cursor.close();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return year_user;
+    }
+
     public void updateData(String username, String name, String value){
         SQLiteDatabase database = this.getWritableDatabase();
 
@@ -179,7 +215,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         database.update(TABLE_NAME, contentValues, USERNAME + " ='" + username + "'", null);
     }
 
-    public void insertBook(String isbn, String author, String title, String version, String year, String course){
+    public void insertBook(String isbn, String author, String title, String version, String year, String course, String table){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("isbn", isbn);
@@ -188,7 +224,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         contentValues.put("version", version);
         contentValues.put("year", year);
         contentValues.put("course", course);
-        database.insert(TABLE_NAME1, null, contentValues);
+        database.insert(table, null, contentValues);
     }
 
     public void deleteUser(String username){
@@ -219,9 +255,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         return count > 0;
     }
 
-    public Boolean checkISBN(String isbn){
+    public Boolean checkISBN(String isbn, String table){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM" + TABLE_NAME1 + " WHERE " + isbn + " = ?", new String[]{isbn});
+        Cursor cursor = database.rawQuery("SELECT * FROM" + table + " WHERE " + isbn + " = ?", new String[]{isbn});
         int count = cursor.getCount();
         cursor.close();
         return count > 0;
@@ -235,9 +271,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         return count > 0;
     }
 
-    public Boolean isBooksEmpty(){
+    public Boolean isBooksEmpty(String table){
         SQLiteDatabase database = this.getReadableDatabase();
-        return DatabaseUtils.queryNumEntries(database, TABLE_NAME1) == 0;
+        return DatabaseUtils.queryNumEntries(database, table) == 0;
 
     }
 }

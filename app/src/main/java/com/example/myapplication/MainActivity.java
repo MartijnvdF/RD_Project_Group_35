@@ -58,11 +58,16 @@ public class MainActivity extends AppCompatActivity {
                 Boolean checkuserpass = dataBaseActivity.checkUsernamePassword(user, pw);
                 if (checkuserpass) {
                     Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                    String year_user = dataBaseActivity.getYearUser(user);
 
                     //put username into sharedpref for other files to use
                     SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("year_user", year_user);
                     editor.putString("Username", user);
                     editor.apply();
+
+                    if(dataBaseActivity.isBooksEmpty(year_user))
+                        dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books), year_user);
 
                     //redirect to main app
                     Intent intent = new Intent(getApplicationContext(), MainActivity3.class);

@@ -9,18 +9,52 @@
         android:id="@+id/nav_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_add_book"
+            app:destination="@id/nav_add_book" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_book"
+            app:destination="@id/nav_book" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_account"
         android:name="com.example.myapplication.ui.account.AccountFragment"
         android:label="Account"
-        tools:layout="@layout/fragment_account"/>
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_nav_account_to_nav_update_account"
+            app:destination="@id/nav_update_account" />
+        <action
+            android:id="@+id/action_nav_account_to_nav_change_password"
+            app:destination="@id/nav_change_password" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_change_password"
+        android:name="com.example.myapplication.ui.changePassword.ChangePasswordFragment"
+        tools:layout="@layout/change_password"/>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.myapplication.ui.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_book"
+        android:name="com.example.myapplication.ui.books.BookPage"
+        tools:layout="@layout/activity_book_page"/>
+
+    <fragment
+        android:id="@+id/nav_add_book"
+        android:name="com.example.myapplication.ui.addBook.AddBookFragment"
+        tools:layout="@layout/add_book"/>
+
+    <fragment
+        android:id="@+id/nav_update_account"
+        android:name="com.example.myapplication.ui.updateAccount.UpdateAccountFragment"
+        tools:layout="@layout/update_account"/>
 
 </navigation>

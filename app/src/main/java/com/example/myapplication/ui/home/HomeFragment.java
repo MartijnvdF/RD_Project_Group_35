@@ -18,11 +18,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.books.book_page;
+import com.example.myapplication.ui.books.BookPage;
 import com.example.myapplication.databinding.FragmentHomeBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,18 +38,16 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    GridView gridView;
     ListView listView;
     List<String> booklist1 = new ArrayList<>();
     DataBaseActivity dataBaseActivity;
+    FloatingActionButton floatingActionButton;
 
 
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
@@ -56,6 +57,7 @@ public class HomeFragment extends Fragment {
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("Username", "");
+        String year_user = sharedPreferences.getString("year_user", "");
 
         //display fullname
         String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);
@@ -64,55 +66,32 @@ public class HomeFragment extends Fragment {
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        //getCourses();
-        booklist1 = dataBaseActivity.getBooksData();
+        floatingActionButton = (FloatingActionButton) root.findViewById(R.id.fab);
 
-        if(dataBaseActivity.isBooksEmpty())
-            dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books));
+        booklist1 = dataBaseActivity.getBooksData(year_user);
 
-
+        NavController navController = NavHostFragment.findNavController(this);
 
         listView = (ListView) root.findViewById(R.id.customListView);
         listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, booklist1));
 
-        //TO DO: redirect to another page using position
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO: go to new page to fill in new book using database.insertBook
-                //Intent intent = new Intent();
-                //startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("course", booklist1.get(i));
+                navController.navigate(R.id.nav_book, bundle);
+            }
+        });
 
-                Log.i("CUSTOM_GRID_VIEW", "Item is clicked at position " + i);
-                Intent intent = new Intent(getContext(), book_page.class);
-                intent.putExtra("course", booklist1.get(i));
-                startActivity(intent);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_add_book);
             }
         });
 
         return root;
-    }
-
-    private void getCourses(){
-
-        InputStream inputStream = getResources().openRawResource(R.raw.books);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream, StandardCharsets.UTF_8)
-        );
-        String line = "";
-        try {
-            line = reader.readLine();
-            while((line = reader.readLine())!=null){
-                //split by ','
-                String[] info = line.split(";");
-
-                //read data
-                booklist1.add(info[5]);
-            }
-        } catch (IOException e) {
-            Log.wtf("HomeFragment", "Error reading data file on line" + line, e);
-            e.printStackTrace();
-        }
     }
 
     @Override
