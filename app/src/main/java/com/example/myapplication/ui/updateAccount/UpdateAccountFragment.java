@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 import androidx.annotation.NonNull;
@@ -36,7 +38,8 @@ public class UpdateAccountFragment extends Fragment {
     private UpdateAccountBinding binding;
 
     MaterialButton uupdatebtn;
-    EditText fullname, studentNumber, major, year, email;
+    EditText fullname, studentNumber, major, email;
+    Spinner year;
     DataBaseActivity dataBaseActivity;
     ArrayList<String> user;
 
@@ -64,7 +67,23 @@ public class UpdateAccountFragment extends Fragment {
         major.setHint(user.get(4));
 
         year = root.findViewById(R.id.uYear);
-        year.setHint(user.get(5));
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.year, R.layout.list_item_spinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        year.setAdapter(adapter);
+
+        int pos = 0;
+        switch (user.get(5)){
+            case "first":
+                pos=1;
+                break;
+            case "second":
+                pos=2;
+                break;
+            case "third":
+                pos=3;
+                break;
+        }
+        year.setSelection(pos);
 
         email = root.findViewById(R.id.uEmail);
         email.setHint(user.get(6));
@@ -79,7 +98,10 @@ public class UpdateAccountFragment extends Fragment {
                 String uname = fullname.getText().toString();
                 String uStudentNumber = studentNumber.getText().toString();
                 String uMajor = major.getText().toString();
-                String uYear = year.getText().toString();
+                String uYear = year.getSelectedItem().toString();
+                if(uYear.equals("Select year")){
+                    uYear = "";
+                }
                 String uEmail = email.getText().toString();
 
                 if(!uname.equals("")){
