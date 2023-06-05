@@ -46,4 +46,10 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="settings">Settings</string>
+    <string-array name="year">
+        <item>Select year</item>
+        <item>first</item>
+        <item>second</item>
+        <item>third</item>
+    </string-array>
 </resources>

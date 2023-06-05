@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText username, password, confirmPassword, fullname, email, major, year;
+    EditText username, password, confirmPassword, fullname, email, major;
     MaterialButton signUpBtn, cancelBtn;
     DataBaseActivity dataBaseActivity;
+    Spinner year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,12 @@ public class SignUp extends AppCompatActivity {
         major = findViewById(R.id.major);
         year = findViewById(R.id.year);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, R.layout.list_item_spinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        year.setAdapter(adapter);
+
+
+
         signUpBtn = findViewById(R.id.signupbtn);
         cancelBtn =  findViewById(R.id.cancelsignup);
 
@@ -41,11 +50,12 @@ public class SignUp extends AppCompatActivity {
             String fn = fullname.getText().toString();
             String em = email.getText().toString();
             String mj = major.getText().toString();
-            String yr = year.getText().toString();
+            String yr = year.getSelectedItem().toString();
+            if(yr.equals("Select year")){
+                yr = "";
+            }
 
-
-
-            if(user.equals("")||pw.equals("")||cpw.equals("")||fn.equals("")||em.equals("")||mj.equals("")||yr.equals("")) {
+            if(user.equals("")||pw.equals("")||cpw.equals("")||fn.equals("")||em.equals("")||mj.equals("")|| yr.equals("")) {
                 Toast.makeText(SignUp.this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             }else{
                 if(pw.equals(cpw)){
