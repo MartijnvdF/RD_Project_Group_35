@@ -31,8 +31,6 @@ public class bookAdapter extends ArrayAdapter<Book> {
         TextView bookTitle = convertView.findViewById(R.id.title_book_page);
         TextView bookVersion = convertView.findViewById(R.id.version_book_page);
         TextView bookYear = convertView.findViewById(R.id.year_book_page);
-        //TextView bookCourse = convertView.findViewById(R.id.) Voor het geval deze nodig is, anders weg halen!
-        TextView bookLink = convertView.findViewById(R.id.link_book_page);
 
         //Set the data for the text view fields
         bookISBN.setText("ISBN: " + book.get_isbn());
@@ -40,7 +38,6 @@ public class bookAdapter extends ArrayAdapter<Book> {
         bookTitle.setText(book.get_title());
         bookVersion.setText("Version: " + book.get_version());
         bookYear.setText("Year: " + book.get_year());
-        bookLink.setText("Link: " + book.get_link());
 
         return convertView;
     }
