@@ -37,6 +37,7 @@ public class SignUp extends AppCompatActivity {
         year.setAdapter(adapter);
 
 
+
         signUpBtn = findViewById(R.id.signupbtn);
         cancelBtn =  findViewById(R.id.cancelsignup);
 

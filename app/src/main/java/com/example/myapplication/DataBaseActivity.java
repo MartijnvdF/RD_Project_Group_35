@@ -255,9 +255,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         return count > 0;
     }
 
-    public Boolean checkISBN(String isbn, String table){
+    public Boolean checkISBN(String isbn, String title){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM" + table + " WHERE " + isbn + " = ?", new String[]{isbn});
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE " + ISBN + " = ? AND " + TITLE + " = ?", new String[]{isbn, title});
         int count = cursor.getCount();
         cursor.close();
         return count > 0;
