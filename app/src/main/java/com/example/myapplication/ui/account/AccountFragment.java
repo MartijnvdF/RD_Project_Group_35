@@ -27,8 +27,8 @@ public class AccountFragment extends Fragment {
 
     private FragmentAccountBinding binding;
     DataBaseActivity dataBaseActivity;
-    TextView fullname, studenNumber, major, year, email;
-    MaterialButton updatebtn, changePW, deleteAccount;
+    TextView fullName, studentNumber, major, year, email;
+    MaterialButton updateBtn, changePW, deleteAccount;
     ArrayList<String> userData;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,22 +41,21 @@ public class AccountFragment extends Fragment {
         SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("Username", "");
 
-
-        updatebtn = (MaterialButton) root.findViewById(R.id.updateaccountbtn);
+        updateBtn = (MaterialButton) root.findViewById(R.id.updateaccountbtn);
         changePW = (MaterialButton) root.findViewById(R.id.change_password);
         deleteAccount = (MaterialButton) root.findViewById(R.id.delete_account);
 
         dataBaseActivity = new DataBaseActivity(getContext());
-        fullname = (TextView) root.findViewById(R.id.full_name);
-        studenNumber = (TextView) root.findViewById(R.id.studentNumber);
+        fullName = (TextView) root.findViewById(R.id.full_name);
+        studentNumber = (TextView) root.findViewById(R.id.studentNumber);
         major = (TextView) root.findViewById(R.id.major);
         year = (TextView) root.findViewById(R.id.year);
         email = (TextView) root.findViewById(R.id.email);
 
         userData = dataBaseActivity.getUserData(userName);
 
-        fullname.setText("Full name: " + userData.get(2));
-        studenNumber.setText("Student number: " + userData.get(3));
+        fullName.setText("Full name: " + userData.get(2));
+        studentNumber.setText("Student number: " + userData.get(3));
         major.setText("Major: " + userData.get(4));
         year.setText("Year: " + userData.get(5));
         email.setText("Email: " + userData.get(6));
@@ -70,7 +69,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        updatebtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.nav_update_account);
@@ -85,7 +84,6 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         return root;
     }

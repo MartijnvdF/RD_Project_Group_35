@@ -14,7 +14,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText username, password, confirmPassword, fullname, email, major;
+    EditText username, password, confirmPassword, fullName, email, major;
     MaterialButton signUpBtn, cancelBtn;
     DataBaseActivity dataBaseActivity;
     Spinner year;
@@ -27,7 +27,7 @@ public class SignUp extends AppCompatActivity {
         username = findViewById(R.id.username1);
         password = findViewById(R.id.password1);
         confirmPassword = findViewById(R.id.confirm_password1);
-        fullname = findViewById(R.id.name);
+        fullName = findViewById(R.id.name);
         email = findViewById(R.id.email);
         major = findViewById(R.id.major);
         year = findViewById(R.id.year);
@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
             String user = username.getText().toString();
             String pw = password.getText().toString();
             String cpw = confirmPassword.getText().toString();
-            String fn = fullname.getText().toString();
+            String fn = fullName.getText().toString();
             String em = email.getText().toString();
             String mj = major.getText().toString();
             String yr = year.getSelectedItem().toString();

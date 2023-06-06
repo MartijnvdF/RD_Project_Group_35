@@ -11,7 +11,6 @@ public class AddBookViewModel extends ViewModel {
     public AddBookViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is Account fragment");
-
     }
 
     public LiveData<String> getText() {

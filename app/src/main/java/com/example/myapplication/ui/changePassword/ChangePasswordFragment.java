@@ -3,27 +3,22 @@ package com.example.myapplication.ui.changePassword;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ChangePasswordBinding;
 import com.google.android.material.button.MaterialButton;
 
-
 public class ChangePasswordFragment extends Fragment {
     private ChangePasswordBinding binding;
-
     MaterialButton changePassword;
     EditText password, cPassword;
     DataBaseActivity dataBaseActivity;

@@ -1,39 +1,16 @@
 package com.example.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Menu;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.myapplication.databinding.ActivityMainBinding;
-import com.example.myapplication.ui.account.AccountFragment;
-import com.example.myapplication.ui.home.HomeFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.myapplication.databinding.ActivityMainBinding;
-
-import java.util.ArrayList;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -61,7 +38,7 @@ public class MainActivity3 extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //loggin out
+        //logging out
         MenuItem logoutItem = navigationView.getMenu().findItem(R.id.logout);
         logoutItem.setOnMenuItemClickListener(menuItem -> {
             startActivity(new Intent(MainActivity3.this, MainActivity.class));
