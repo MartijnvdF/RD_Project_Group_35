@@ -181,7 +181,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         try {
             Cursor cursor = database.rawQuery("SELECT * FROM " + table + " WHERE " + COURSE + " =?", new String[]{course});
             while(cursor.moveToNext()){
-                Book book = new Book(cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6), "");
+                Book book = new Book(cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
                 books.add(book);
             }
             cursor.close();
