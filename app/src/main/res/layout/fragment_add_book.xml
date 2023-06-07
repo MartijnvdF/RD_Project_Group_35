@@ -146,16 +146,5 @@
         android:textSize="20sp"
         app:cornerRadius="25dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/test"
-        android:layout_below="@id/scrollview_add_book"
-        android:layout_toStartOf="@+id/materialbutton_add_book"
-        android:backgroundTint="#5766ED"
-        android:text="test notification"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:cornerRadius="25dp"/>
 
 </RelativeLayout>

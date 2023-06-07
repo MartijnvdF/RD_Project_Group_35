@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -32,12 +31,14 @@ public class SettingsFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         boolean darkMode = sharedPreferences.getBoolean("DARK_MODE", false);
+        boolean notification = sharedPreferences.getBoolean("NOTIFICATION", false);
 
         darkModeBtn = (SwitchCompat) root.findViewById(R.id.switch_settings_dark_mode);
         if(darkMode){
             darkModeBtn.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+
         darkModeBtn.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -51,6 +52,10 @@ public class SettingsFragment extends Fragment {
         });
 
         notifications = (SwitchCompat) root.findViewById(R.id.switch_settings_notifications);
+
+        if(notification){
+            notifications.setChecked(true);
+        }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);

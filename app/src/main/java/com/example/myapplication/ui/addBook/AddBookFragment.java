@@ -30,7 +30,7 @@ import java.util.Objects;
 
 public class AddBookFragment extends Fragment {
     private FragmentAddBookBinding binding;
-    MaterialButton addBookButton, test;
+    MaterialButton addBookButton;
     DataBaseActivity dataBaseActivity;
     EditText isbn, title, author, version, year;
     Spinner courseMenu;
@@ -67,7 +67,6 @@ public class AddBookFragment extends Fragment {
 
         // Set up the buttons
         addBookButton = root.findViewById(R.id.materialbutton_add_book);
-        test = root.findViewById(R.id.test);
 
         addBookButton.setOnClickListener(view -> {
             String isbn_str = isbn.getText().toString();
@@ -101,21 +100,6 @@ public class AddBookFragment extends Fragment {
             } else {
                 Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
-        });
-
-        test.setOnClickListener(view -> {
-            if(notification) {
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
-                builder.setContentTitle("Notification");
-                builder.setContentText("New book has been added");
-                builder.setSmallIcon(R.drawable.books);
-                builder.setAutoCancel(true);
-                builder.setPriority(NotificationCompat.PRIORITY_HIGH);
-
-                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
-                managerCompat.notify(1, builder.build());
-            }
-            navController.navigateUp();
         });
 
         return root;
