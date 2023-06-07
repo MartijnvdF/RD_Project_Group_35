@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
 
         floatingActionButton = (FloatingActionButton) root.findViewById(R.id.fab);
 
-        bookList = dataBaseActivity.getBooksData(year_user);
+        bookList = dataBaseActivity.getCourses(year_user);
 
         NavController navController = NavHostFragment.findNavController(this);
 

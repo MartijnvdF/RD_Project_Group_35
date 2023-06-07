@@ -89,19 +89,19 @@ public class UpdateAccountFragment extends Fragment {
                 String uEmail = email.getText().toString();
 
                 if(!uname.equals("")){
-                    dataBaseActivity.updateData(userName, "fullName", uname);
+                    dataBaseActivity.updateUserData(userName, "fullName", uname);
                 }
                 if(!uStudentNumber.equals("")){
-                    dataBaseActivity.updateData(userName, "studentNumber", uStudentNumber);
+                    dataBaseActivity.updateUserData(userName, "studentNumber", uStudentNumber);
                 }
                 if(!uMajor.equals("")){
-                    dataBaseActivity.updateData(userName, "major", uMajor);
+                    dataBaseActivity.updateUserData(userName, "major", uMajor);
                 }
                 if(!uYear.equals("")){
-                    dataBaseActivity.updateData(userName, "year", uYear);
+                    dataBaseActivity.updateUserData(userName, "year", uYear);
                 }
                 if(!uEmail.equals("")){
-                    dataBaseActivity.updateData(userName, "email", uEmail);
+                    dataBaseActivity.updateUserData(userName, "email", uEmail);
                 }
 
                 navController.navigateUp();

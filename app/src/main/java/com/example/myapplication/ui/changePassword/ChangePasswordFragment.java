@@ -51,7 +51,7 @@ public class ChangePasswordFragment extends Fragment {
                     Toast.makeText(getContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
                 }else{
                     if(uPassword.equals(uCPassword)){
-                        dataBaseActivity.updateData(userName, "password", uPassword);
+                        dataBaseActivity.updateUserData(userName, "password", uPassword);
                         navController.navigateUp();
                     }else{
                         Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();

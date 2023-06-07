@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -26,7 +25,6 @@ import com.example.myapplication.databinding.AddBookBinding;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class AddBookFragment extends Fragment {
@@ -56,7 +54,7 @@ public class AddBookFragment extends Fragment {
         dataBaseActivity = new DataBaseActivity(getContext());
 
         // Get all courses in an array
-        ArrayList<String> courses = dataBaseActivity.getBooksData("first");
+        ArrayList<String> courses = dataBaseActivity.getCourses("first");
         courses.add(0, "Select course");
         String[] courses1 = new String[courses.size()];
         courses1 = courses.toArray(courses1);
