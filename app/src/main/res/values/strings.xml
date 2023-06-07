@@ -51,6 +51,10 @@
     <string name="cancel">Cancel</string>
     <string name="attempts_left">Attempts left:</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="account_info">Account Info</string>
+    <string name="update_account">update account</string>
+    <string name="change_password">change password</string>
+    <string name="delete_account">delete account</string>
 
     <string-array name="year">
         <item>Select year</item>
