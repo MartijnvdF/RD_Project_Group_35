@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -22,24 +21,22 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+        setContentView(R.layout.activity_sign_up);
 
-        username = findViewById(R.id.username1);
-        password = findViewById(R.id.password1);
-        confirmPassword = findViewById(R.id.confirm_password1);
-        fullName = findViewById(R.id.name);
-        email = findViewById(R.id.email);
-        major = findViewById(R.id.major);
-        year = findViewById(R.id.year);
+        username = findViewById(R.id.edittext_sign_up_username);
+        password = findViewById(R.id.edittext_sign_up_password);
+        confirmPassword = findViewById(R.id.edittext_sign_up_confirm_password);
+        fullName = findViewById(R.id.edittext_sign_up_full_name);
+        email = findViewById(R.id.edittext_sign_up_email);
+        major = findViewById(R.id.edittext_sign_up_major);
+        year = findViewById(R.id.edittext_sign_up_year);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, R.layout.list_item_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year.setAdapter(adapter);
 
-
-
-        signUpBtn = findViewById(R.id.signupbtn);
-        cancelBtn =  findViewById(R.id.cancelsignup);
+        signUpBtn = findViewById(R.id.materialbutton_sign_up_signup);
+        cancelBtn =  findViewById(R.id.materialbutton_sign_up_cancel);
 
         dataBaseActivity = new DataBaseActivity(this);
 
@@ -78,12 +75,9 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignUp.this, MainActivity.class));
-                finish();
-            }
+        cancelBtn.setOnClickListener(view -> {
+            startActivity(new Intent(SignUp.this, MainActivity.class));
+            finish();
         });
 
     }
