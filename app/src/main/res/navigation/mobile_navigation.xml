@@ -45,12 +45,12 @@
     <fragment
         android:id="@+id/nav_book"
         android:name="com.example.myapplication.ui.books.BookPage"
-        tools:layout="@layout/activity_book_page"/>
+        tools:layout="@layout/fragment_book_page"/>
 
     <fragment
         android:id="@+id/nav_add_book"
         android:name="com.example.myapplication.ui.addBook.AddBookFragment"
-        tools:layout="@layout/add_book"/>
+        tools:layout="@layout/fragment_add_book"/>
 
     <fragment
         android:id="@+id/nav_update_account"

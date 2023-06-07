@@ -21,14 +21,15 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.AddBookBinding;
+import com.example.myapplication.databinding.FragmentAddBookBinding;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class AddBookFragment extends Fragment {
-    private AddBookBinding binding;
+    private FragmentAddBookBinding binding;
     MaterialButton addBookButton, test;
     DataBaseActivity dataBaseActivity;
     EditText isbn, title, author, version, year;
@@ -37,36 +38,36 @@ public class AddBookFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = AddBookBinding.inflate(inflater, container, false);
+        binding = FragmentAddBookBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         NavController navController = NavHostFragment.findNavController(this);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String year_user = sharedPreferences.getString("YEAR_USER", "");
+        String YEAR_USER = sharedPreferences.getString("YEAR_USER", "");
         boolean notification = sharedPreferences.getBoolean("NOTIFICATION", false);
 
-        isbn = root.findViewById(R.id.isbn);
-        title = root.findViewById(R.id.title);
-        author = root.findViewById(R.id.author);
-        version = root.findViewById(R.id.version);
-        year = root.findViewById(R.id.year);
-        courseMenu = root.findViewById(R.id.course);
+        isbn = root.findViewById(R.id.edittext_add_book_isbn);
+        title = root.findViewById(R.id.edittext_add_book_title);
+        author = root.findViewById(R.id.edittext_add_book_author);
+        version = root.findViewById(R.id.edittext_add_book_version);
+        year = root.findViewById(R.id.edittext_add_book_year);
+        courseMenu = root.findViewById(R.id.edittext_add_book_course);
         dataBaseActivity = new DataBaseActivity(getContext());
 
         // Get all courses in an array
-        ArrayList<String> courses = dataBaseActivity.getCourses("first");
-        courses.add(0, "Select course");
-        String[] courses1 = new String[courses.size()];
-        courses1 = courses.toArray(courses1);
+        ArrayList<String> tempCourses = dataBaseActivity.getCourses("first");
+        tempCourses.add(0, "Select course");
+        String[] courses = new String[tempCourses.size()];
+        courses = tempCourses.toArray(courses);
 
         // Link the courses to the menu
-        ArrayAdapter ad = new ArrayAdapter(getContext(), R.layout.list_item_spinner_course, courses1);
+        ArrayAdapter ad = new ArrayAdapter(getContext(), R.layout.list_item_spinner_course, courses);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         courseMenu.setAdapter(ad);
 
         // Set up the buttons
-        addBookButton = (MaterialButton) root.findViewById(R.id.add_book_button);
-        test = (MaterialButton) root.findViewById(R.id.test);
+        addBookButton = root.findViewById(R.id.materialbutton_add_book);
+        test = root.findViewById(R.id.test);
 
         addBookButton.setOnClickListener(view -> {
             String isbn_str = isbn.getText().toString();
@@ -79,8 +80,8 @@ public class AddBookFragment extends Fragment {
                 course_str = "";
             }
 
-            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, year_user)){
-                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, year_user);
+            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, YEAR_USER)){
+                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, YEAR_USER);
 
                 if(notification) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
@@ -95,7 +96,7 @@ public class AddBookFragment extends Fragment {
                 }
 
                 navController.navigateUp();
-            } else if(dataBaseActivity.checkISBN(isbn_str, title_str)){
+            } else if(dataBaseActivity.checkISBN(isbn_str, title_str, YEAR_USER)){
                 Toast.makeText(getContext(), "Book already exists", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -120,9 +121,9 @@ public class AddBookFragment extends Fragment {
         return root;
     }
 
-    public Boolean safeAddBook(String isbn, String title, String author, String version, String year, String course, DataBaseActivity dba, String year_user){
-        return !dba.checkISBN(isbn, title) // check if the combination of isbn and title does not already exist in the database
-                && (title != "" && author != "" && version != "" && year != "" && course != ""); // check if all strings except isbn are non-empty
+    public Boolean safeAddBook(String isbn, String title, String author, String version, String year, String course, DataBaseActivity dataBaseActivity, String yearUser){
+        return !dataBaseActivity.checkISBN(isbn, title, yearUser) // check if the combination of isbn and title does not already exist in the database
+                && (!Objects.equals(title, "") && !Objects.equals(author, "") && !Objects.equals(version, "") && !Objects.equals(year, "") && !Objects.equals(course, "")); // check if all strings except isbn are non-empty
     }
 
     @Override
