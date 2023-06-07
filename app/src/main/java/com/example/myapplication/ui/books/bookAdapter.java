@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.example.myapplication.R;
-import com.example.myapplication.ui.books.Book;
-
 import java.util.ArrayList;
 
 public class bookAdapter extends ArrayAdapter<Book> {

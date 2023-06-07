@@ -3,27 +3,22 @@ package com.example.myapplication.ui.changePassword;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ChangePasswordBinding;
 import com.google.android.material.button.MaterialButton;
 
-
 public class ChangePasswordFragment extends Fragment {
     private ChangePasswordBinding binding;
-
     MaterialButton changePassword;
     EditText password, cPassword;
     DataBaseActivity dataBaseActivity;
@@ -56,7 +51,7 @@ public class ChangePasswordFragment extends Fragment {
                     Toast.makeText(getContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
                 }else{
                     if(uPassword.equals(uCPassword)){
-                        dataBaseActivity.updateData(userName, "password", uPassword);
+                        dataBaseActivity.updateUserData(userName, "password", uPassword);
                         navController.navigateUp();
                     }else{
                         Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();

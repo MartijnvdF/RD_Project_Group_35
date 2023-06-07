@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -26,16 +25,14 @@ import com.example.myapplication.databinding.AddBookBinding;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class AddBookFragment extends Fragment {
     private AddBookBinding binding;
     MaterialButton addBookButton, test;
-
     DataBaseActivity dataBaseActivity;
     EditText isbn, title, author, version, year;
-    Spinner course1;
+    Spinner courseMenu;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,20 +50,21 @@ public class AddBookFragment extends Fragment {
         author = root.findViewById(R.id.author);
         version = root.findViewById(R.id.version);
         year = root.findViewById(R.id.year);
-        course1 = root.findViewById(R.id.course);
+        courseMenu = root.findViewById(R.id.course);
         dataBaseActivity = new DataBaseActivity(getContext());
 
-        ArrayList<String> courses = dataBaseActivity.getBooksData("first");
+        // Get all courses in an array
+        ArrayList<String> courses = dataBaseActivity.getCourses("first");
         courses.add(0, "Select course");
         String[] courses1 = new String[courses.size()];
         courses1 = courses.toArray(courses1);
 
+        // Link the courses to the menu
         ArrayAdapter ad = new ArrayAdapter(getContext(), R.layout.list_item_spinner_course, courses1);
-
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        course1.setAdapter(ad);
+        courseMenu.setAdapter(ad);
 
-
+        // Set up the buttons
         addBookButton = (MaterialButton) root.findViewById(R.id.add_book_button);
         test = (MaterialButton) root.findViewById(R.id.test);
 
@@ -76,7 +74,7 @@ public class AddBookFragment extends Fragment {
             String author_str = author.getText().toString();
             String version_str = version.getText().toString();
             String year_str = year.getText().toString();
-            String course_str = course1.getSelectedItem().toString();
+            String course_str = courseMenu.getSelectedItem().toString();
             if(course_str.equals("Select course")){
                 course_str = "";
             }
@@ -99,7 +97,7 @@ public class AddBookFragment extends Fragment {
                 navController.navigateUp();
             } else if(dataBaseActivity.checkISBN(isbn_str, title_str)){
                 Toast.makeText(getContext(), "Book already exists", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
         });
@@ -123,7 +121,7 @@ public class AddBookFragment extends Fragment {
     }
 
     public Boolean safeAddBook(String isbn, String title, String author, String version, String year, String course, DataBaseActivity dba, String year_user){
-        return !dba.checkISBN(isbn, title) // check if the isbn does not already exist in the database
+        return !dba.checkISBN(isbn, title) // check if the combination of isbn and title does not already exist in the database
                 && (title != "" && author != "" && version != "" && year != "" && course != ""); // check if all strings except isbn are non-empty
     }
 

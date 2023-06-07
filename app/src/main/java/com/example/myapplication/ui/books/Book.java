@@ -3,7 +3,7 @@ package com.example.myapplication.ui.books;
 public class Book {
     private String isbn, author, title, version, year;
 
-    public Book(String isbn, String author, String title, String version, String year, String course, String link) {
+    public Book(String isbn, String author, String title, String version, String year) {
         this.isbn = isbn;
         this.author = author;
         this.title = title;
