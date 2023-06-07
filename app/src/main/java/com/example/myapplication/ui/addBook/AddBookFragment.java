@@ -43,7 +43,7 @@ public class AddBookFragment extends Fragment {
 
         NavController navController = NavHostFragment.findNavController(this);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String YEAR_USER = sharedPreferences.getString("YEAR_USER", "");
+        String yearUser = sharedPreferences.getString("YEAR_USER", "");
         boolean notification = sharedPreferences.getBoolean("NOTIFICATION", false);
 
         isbn = root.findViewById(R.id.edittext_add_book_isbn);
@@ -80,8 +80,8 @@ public class AddBookFragment extends Fragment {
                 course_str = "";
             }
 
-            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, YEAR_USER)){
-                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, YEAR_USER);
+            if (safeAddBook(isbn_str, title_str, author_str, version_str, year_str, course_str, dataBaseActivity, yearUser)){
+                dataBaseActivity.insertBook(isbn_str, author_str, title_str, version_str, year_str, course_str, yearUser);
 
                 if(notification) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "My Notification");
@@ -96,7 +96,7 @@ public class AddBookFragment extends Fragment {
                 }
 
                 navController.navigateUp();
-            } else if(dataBaseActivity.checkISBN(isbn_str, title_str, YEAR_USER)){
+            } else if(dataBaseActivity.checkISBN(isbn_str, title_str, yearUser)){
                 Toast.makeText(getContext(), "Book already exists", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();

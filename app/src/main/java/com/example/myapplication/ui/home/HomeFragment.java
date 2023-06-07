@@ -39,19 +39,19 @@ public class HomeFragment extends Fragment {
 
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("USERNAME", "");
-        String year_user = sharedPreferences.getString("YEAR_USER", "");
+        String username = sharedPreferences.getString("USERNAME", "");
+        String yearUser = sharedPreferences.getString("YEAR_USER", "");
 
         //display fullName
-        String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);
+        String welcomeMessage = "Welcome " + dataBaseActivity.getUserData(username).get(2);
 
         //display username
         TextView textView = root.findViewById(R.id.custom_Msg);
-        textView.setText(username);
+        textView.setText(welcomeMessage);
 
         floatingActionButton = root.findViewById(R.id.fab);
 
-        bookList = dataBaseActivity.getCourses(year_user);
+        bookList = dataBaseActivity.getCourses(yearUser);
 
         NavController navController = NavHostFragment.findNavController(this);
 
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
 
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             Bundle bundle = new Bundle();
-            bundle.putString("course", bookList.get(i));
+            bundle.putString("COURSE", bookList.get(i));
             navController.navigate(R.id.nav_book, bundle);
         });
 

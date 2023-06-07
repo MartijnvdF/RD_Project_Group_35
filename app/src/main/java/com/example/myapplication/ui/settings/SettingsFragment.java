@@ -33,7 +33,7 @@ public class SettingsFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         boolean darkMode = sharedPreferences.getBoolean("DARK_MODE", false);
 
-        darkModeBtn = (SwitchCompat) root.findViewById(R.id.dark_mode_btn);
+        darkModeBtn = (SwitchCompat) root.findViewById(R.id.switch_settings_dark_mode);
         if(darkMode){
             darkModeBtn.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -50,20 +50,17 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        notifications = (SwitchCompat) root.findViewById(R.id.notifications_btn);
+        notifications = (SwitchCompat) root.findViewById(R.id.switch_settings_notifications);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getActivity().getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
-        notifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("NOTIFICATION", b);
-                editor.apply();
-            }
+        notifications.setOnCheckedChangeListener((compoundButton, b) -> {
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("NOTIFICATION", b);
+            editor1.apply();
         });
         return root;
     }

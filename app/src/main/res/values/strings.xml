@@ -66,6 +66,8 @@
     <string name="books">Books</string>
     <string name="student_number">Student Number</string>
     <string name="update">Update</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="notifications">Notifications</string>
 
     <string-array name="year">
         <item>Select year</item>

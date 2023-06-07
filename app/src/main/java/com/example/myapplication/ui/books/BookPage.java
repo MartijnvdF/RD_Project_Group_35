@@ -23,7 +23,7 @@ public class BookPage extends Fragment {
     bookAdapter adapter;
     ListView listView;
     DataBaseActivity dataBaseActivity;
-    String year_user;
+    String yearUser;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class BookPage extends Fragment {
 
         dataBaseActivity = new DataBaseActivity(getContext());
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        year_user = sharedPreferences.getString("YEAR_USER", "");
+        yearUser = sharedPreferences.getString("YEAR_USER", "");
 
         listView = view.findViewById(R.id.listview_book_page);
-        bookArray = dataBaseActivity.getBookInfo(getArguments().getString("course"), year_user);
+        bookArray = dataBaseActivity.getBookInfo(getArguments().getString("COURSE"), yearUser);
         adapter = new bookAdapter(getContext(), bookArray);
 
         listView.setAdapter(adapter);
