@@ -51,7 +51,7 @@ public class AddBookFragment extends Fragment {
         author = root.findViewById(R.id.edittext_add_book_author);
         version = root.findViewById(R.id.edittext_add_book_version);
         year = root.findViewById(R.id.edittext_add_book_year);
-        courseMenu = root.findViewById(R.id.edittext_add_book_course);
+        courseMenu = root.findViewById(R.id.spinner_add_book_course);
         dataBaseActivity = new DataBaseActivity(getContext());
 
         // Get all courses in an array

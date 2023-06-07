@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/nav_change_password"
         android:name="com.example.myapplication.ui.changePassword.ChangePasswordFragment"
-        tools:layout="@layout/change_password"/>
+        tools:layout="@layout/fragment_change_password"/>
 
     <fragment
         android:id="@+id/nav_settings"
@@ -55,6 +55,6 @@
     <fragment
         android:id="@+id/nav_update_account"
         android:name="com.example.myapplication.ui.updateAccount.UpdateAccountFragment"
-        tools:layout="@layout/update_account"/>
+        tools:layout="@layout/fragment_update_account"/>
 
 </navigation>

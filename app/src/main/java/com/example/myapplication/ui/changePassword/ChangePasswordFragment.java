@@ -14,48 +14,45 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.ChangePasswordBinding;
+import com.example.myapplication.databinding.FragmentChangePasswordBinding;
 import com.google.android.material.button.MaterialButton;
 
 public class ChangePasswordFragment extends Fragment {
-    private ChangePasswordBinding binding;
+    private FragmentChangePasswordBinding binding;
     MaterialButton changePassword;
-    EditText password, cPassword;
+    EditText password, confirmPassword;
     DataBaseActivity dataBaseActivity;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = ChangePasswordBinding.inflate(inflater, container, false);
+        binding = FragmentChangePasswordBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("USERNAME", "");
 
-        changePassword = (MaterialButton) root.findViewById(R.id.change_password_button);
+        changePassword = (MaterialButton) root.findViewById(R.id.materialbutton_change_password);
 
-        password = (EditText) root.findViewById(R.id.change_password1);
-        cPassword = (EditText) root.findViewById(R.id.change_confirm_password1);
+        password = (EditText) root.findViewById(R.id.edittext_change_password);
+        confirmPassword = (EditText) root.findViewById(R.id.edittext_change_password_confirm_password);
 
         dataBaseActivity = new DataBaseActivity(getContext());
 
         NavController navController = NavHostFragment.findNavController(this);
 
-        changePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String uPassword = password.getText().toString();
-                String uCPassword = cPassword.getText().toString();
+        changePassword.setOnClickListener(view -> {
+            String updatedPassword = password.getText().toString();
+            String updatedConfirmPassword = confirmPassword.getText().toString();
 
-                if(uPassword.equals("")||uCPassword.equals("")) {
-                    Toast.makeText(getContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+            if(updatedPassword.equals("")||updatedConfirmPassword.equals("")) {
+                Toast.makeText(getContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+            }else{
+                if(updatedPassword.equals(updatedConfirmPassword)){
+                    dataBaseActivity.updateUserData(userName, "password", updatedPassword);
+                    navController.navigateUp();
                 }else{
-                    if(uPassword.equals(uCPassword)){
-                        dataBaseActivity.updateUserData(userName, "password", uPassword);
-                        navController.navigateUp();
-                    }else{
-                        Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

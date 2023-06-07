@@ -15,7 +15,7 @@
 
 
             <TextView
-                android:id="@+id/updateaccount"
+                android:id="@+id/textview_update_account_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -23,16 +23,16 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="50dp"
                 android:gravity="center"
-                android:text="Update Account"
+                android:text="@string/update_account"
                 style="@style/Theme.AppCompat"
                 android:textSize="35sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/ufull_name"
+                android:id="@+id/edittext_update_account_full_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/updateaccount"
+                android:layout_below="@id/textview_update_account_text"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -41,7 +41,7 @@
                 android:background="@drawable/roundstyle"
                 android:backgroundTint="#A5D2FC"
                 android:drawablePadding="20dp"
-                android:hint="Full Name"
+                android:hint="@string/full_name"
                 android:padding="13dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -50,11 +50,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/ustudentNumber"
-                android:layout_below="@id/ufull_name"
+                android:id="@+id/edittext_update_account_student_number"
+                android:layout_below="@id/edittext_update_account_full_name"
                 android:background="@drawable/roundstyle"
                 android:backgroundTint="#A5D2FC"
-                android:hint="Student Number"
+                android:hint="@string/student_number"
                 android:textColorHint="@color/black"
                 android:drawableStart="@drawable/baseline_person_24"
                 android:textColor="@color/black"
@@ -64,10 +64,10 @@
                 android:drawablePadding="20dp"/>
 
             <EditText
-                android:id="@+id/uMajor"
+                android:id="@+id/edittext_update_account_major"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ustudentNumber"
+                android:layout_below="@id/edittext_update_account_student_number"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -76,7 +76,7 @@
                 android:drawableStart="@drawable/baseline_school_24"
                 android:backgroundTint="#A5D2FC"
                 android:drawablePadding="20dp"
-                android:hint="Major"
+                android:hint="@string/major"
                 android:padding="13dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -85,8 +85,8 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/uMajor"
-                android:id="@+id/uYear"
+                android:layout_below="@+id/edittext_update_account_major"
+                android:id="@+id/spinner_update_account_year"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -101,12 +101,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/uEmail"
-                android:layout_below="@id/uYear"
+                android:id="@+id/edittext_update_account_email"
+                android:layout_below="@id/spinner_update_account_year"
                 android:background="@drawable/roundstyle"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:backgroundTint="#A5D2FC"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:layout_margin="10dp"
@@ -115,13 +115,13 @@
                 android:drawablePadding="20dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/uupdateaccountbtn"
+                android:id="@+id/materialbutton_update_account"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
-                android:layout_below="@id/uEmail"
+                android:layout_below="@id/edittext_update_account_email"
                 android:layout_centerHorizontal="true"
                 android:backgroundTint="#5766ED"
-                android:text="Update"
+                android:text="@string/update"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:cornerRadius="25dp" />

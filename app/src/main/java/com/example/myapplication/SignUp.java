@@ -29,7 +29,7 @@ public class SignUp extends AppCompatActivity {
         fullName = findViewById(R.id.edittext_sign_up_full_name);
         email = findViewById(R.id.edittext_sign_up_email);
         major = findViewById(R.id.edittext_sign_up_major);
-        year = findViewById(R.id.edittext_sign_up_year);
+        year = findViewById(R.id.spinner_sign_up_year);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, R.layout.list_item_spinner_year);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
