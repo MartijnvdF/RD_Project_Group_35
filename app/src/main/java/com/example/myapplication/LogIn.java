@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,7 +42,7 @@ public class LogIn extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
 
-        boolean darkMode = sharedPreferences.getBoolean("dark", false);
+        boolean darkMode = sharedPreferences.getBoolean("DARK_MODE", false);
         if(darkMode){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
@@ -62,8 +62,8 @@ public class LogIn extends AppCompatActivity {
 
                     //put username into sharedpref for other files to use
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("yearUser", yearUser);
-                    editor.putString("username", user);
+                    editor.putString("YEAR_USER", yearUser);
+                    editor.putString("USERNAME", user);
                     editor.apply();
 
                     //fill database with data from file
@@ -72,7 +72,6 @@ public class LogIn extends AppCompatActivity {
 
                     //redirect to main app
                     Intent intent = new Intent(LogIn.this, MainActivity3.class);
-                    intent.putExtra("Username", user);
                     startActivity(intent);
                     finish();
                 } else {
@@ -92,12 +91,9 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LogIn.this, SignUp.class));
-                finish();
-            }
+        signUpBtn.setOnClickListener(view -> {
+            startActivity(new Intent(LogIn.this, SignUp.class));
+            finish();
         });
     }
 }

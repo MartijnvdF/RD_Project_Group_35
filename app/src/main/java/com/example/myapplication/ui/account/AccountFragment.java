@@ -39,7 +39,7 @@ public class AccountFragment extends Fragment {
 
         //get username from login
         SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("username", "");
+        String userName = sharedPreferences.getString("USERNAME", "");
 
         updateBtn = (MaterialButton) root.findViewById(R.id.updateaccountbtn);
         changePW = (MaterialButton) root.findViewById(R.id.change_password);

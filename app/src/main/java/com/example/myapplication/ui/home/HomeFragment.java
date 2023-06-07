@@ -40,8 +40,8 @@ public class HomeFragment extends Fragment {
 
         //get username from login page
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("username", "");
-        String year_user = sharedPreferences.getString("yearUser", "");
+        String userName = sharedPreferences.getString("USERNAME", "");
+        String year_user = sharedPreferences.getString("YEAR_USER", "");
 
         //display fullName
         String username = "Welcome " + dataBaseActivity.getUserData(userName).get(2);

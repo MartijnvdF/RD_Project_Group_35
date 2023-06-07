@@ -42,8 +42,8 @@ public class AddBookFragment extends Fragment {
 
         NavController navController = NavHostFragment.findNavController(this);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String year_user = sharedPreferences.getString("yearUser", "");
-        boolean notification = sharedPreferences.getBoolean("notification", false);
+        String year_user = sharedPreferences.getString("YEAR_USER", "");
+        boolean notification = sharedPreferences.getBoolean("NOTIFICATION", false);
 
         isbn = root.findViewById(R.id.isbn);
         title = root.findViewById(R.id.title);

@@ -31,7 +31,7 @@ public class SettingsFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        boolean darkMode = sharedPreferences.getBoolean("dark", false);
+        boolean darkMode = sharedPreferences.getBoolean("DARK_MODE", false);
 
         darkModeBtn = (SwitchCompat) root.findViewById(R.id.dark_mode_btn);
         if(darkMode){
@@ -41,11 +41,11 @@ public class SettingsFragment extends Fragment {
         darkModeBtn.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                editor.putBoolean("dark", true);
+                editor.putBoolean("DARK_MODE", true);
                 editor.apply();
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                editor.putBoolean("dark", false);
+                editor.putBoolean("DARK_MODE", false);
                 editor.apply();
             }
         });
@@ -61,7 +61,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("notification", b);
+                editor.putBoolean("NOTIFICATION", b);
                 editor.apply();
             }
         });
