@@ -41,7 +41,7 @@ public class MainActivity3 extends AppCompatActivity {
         //logging out
         MenuItem logoutItem = navigationView.getMenu().findItem(R.id.logout);
         logoutItem.setOnMenuItemClickListener(menuItem -> {
-            startActivity(new Intent(MainActivity3.this, MainActivity.class));
+            startActivity(new Intent(MainActivity3.this, LogIn.class));
             finish();
             return true;
         });

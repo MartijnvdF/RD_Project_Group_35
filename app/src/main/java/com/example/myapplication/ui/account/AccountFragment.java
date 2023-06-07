@@ -15,7 +15,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.DataBaseActivity;
-import com.example.myapplication.MainActivity;
+import com.example.myapplication.LogIn;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.material.button.MaterialButton;
@@ -39,7 +39,7 @@ public class AccountFragment extends Fragment {
 
         //get username from login
         SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("username", "");
 
         updateBtn = (MaterialButton) root.findViewById(R.id.updateaccountbtn);
         changePW = (MaterialButton) root.findViewById(R.id.change_password);
@@ -80,7 +80,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dataBaseActivity.deleteUser(userName);
-                Intent intent = new Intent(getContext(), MainActivity.class);
+                Intent intent = new Intent(getContext(), LogIn.class);
                 startActivity(intent);
             }
         });

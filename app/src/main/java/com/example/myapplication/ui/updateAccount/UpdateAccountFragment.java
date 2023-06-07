@@ -34,7 +34,7 @@ public class UpdateAccountFragment extends Fragment {
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("username", "");
 
         dataBaseActivity = new DataBaseActivity(getContext());
         user = dataBaseActivity.getUserData(userName);

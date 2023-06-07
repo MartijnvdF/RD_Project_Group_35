@@ -30,7 +30,7 @@ public class ChangePasswordFragment extends Fragment {
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("username", "");
 
         changePassword = (MaterialButton) root.findViewById(R.id.change_password_button);
 

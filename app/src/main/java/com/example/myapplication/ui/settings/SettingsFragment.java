@@ -61,7 +61,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("Notification", b);
+                editor.putBoolean("notification", b);
                 editor.apply();
             }
         });
