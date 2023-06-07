@@ -8,7 +8,7 @@
     tools:context=".ui.account.AccountFragment">
 
     <ImageView
-        android:id="@+id/accountPic"
+        android:id="@+id/imageview_account_picture"
         android:layout_width="136dp"
         android:layout_height="136dp"
         android:layout_centerHorizontal="true"
@@ -19,13 +19,13 @@
         android:src="@drawable/account" />
 
     <TextView
-        android:id="@+id/accountInfo"
+        android:id="@+id/textview_account_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/accountPic"
+        android:layout_below="@+id/imageview_account_picture"
         android:layout_marginStart="10dp"
         android:gravity="center"
-        android:text="Account Info"
+        android:text="@string/account_info"
         style="@style/Theme.AppCompat"
         android:textSize="35sp" />
 
@@ -33,73 +33,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/full_name"
+        android:id="@+id/textview_account_full_name"
         style="@style/Theme.AppCompat"
-        android:layout_below="@+id/accountInfo"/>
+        android:layout_below="@+id/textview_account_title"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/studentNumber"
+        android:id="@+id/textview_account_student_number"
         style="@style/Theme.AppCompat"
-        android:layout_below="@+id/full_name"/>
+        android:layout_below="@+id/textview_account_full_name"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/major"
+        android:id="@+id/textview_account_major"
         style="@style/Theme.AppCompat"
-        android:layout_below="@+id/studentNumber"/>
+        android:layout_below="@+id/textview_account_student_number"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/year"
+        android:id="@+id/textview_account_year"
         style="@style/Theme.AppCompat"
-        android:layout_below="@+id/major"/>
+        android:layout_below="@+id/textview_account_major"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:id="@+id/email"
+        android:id="@+id/textview_account_email"
         style="@style/Theme.AppCompat"
-        android:layout_below="@+id/year"/>
+        android:layout_below="@+id/textview_account_year"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/updateaccountbtn"
+        android:id="@+id/materialbutton_account_update"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:backgroundTint="#A4D2FC"
-        android:text="update account"
+        android:text="@string/update_account"
         android:textColor="@color/black"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/textview_account_email"
         app:cornerRadius="25dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/change_password"
+        android:id="@+id/materialbutton_account_change_password"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:backgroundTint="#A4D2FC"
-        android:text="change password"
+        android:text="@string/change_password"
         android:textColor="@color/black"
-        android:layout_below="@+id/updateaccountbtn"
+        android:layout_below="@+id/materialbutton_account_update"
         app:cornerRadius="25dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/delete_account"
+        android:id="@+id/materialbutton_account_delete_account"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:backgroundTint="#A4D2FC"
-        android:text="delete account"
+        android:text="@string/delete_account"
         android:textColor="@color/black"
-        android:layout_below="@+id/change_password"
+        android:layout_below="@+id/materialbutton_account_change_password"
         app:cornerRadius="25dp" />
 
 

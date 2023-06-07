@@ -28,7 +28,7 @@ public class AccountFragment extends Fragment {
     private FragmentAccountBinding binding;
     DataBaseActivity dataBaseActivity;
     TextView fullName, studentNumber, major, year, email;
-    MaterialButton updateBtn, changePW, deleteAccount;
+    MaterialButton updateBtn, changePassword, deleteAccount;
     ArrayList<String> userData;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,18 +41,18 @@ public class AccountFragment extends Fragment {
         SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("USERNAME", "");
 
-        updateBtn = (MaterialButton) root.findViewById(R.id.updateaccountbtn);
-        changePW = (MaterialButton) root.findViewById(R.id.change_password);
-        deleteAccount = (MaterialButton) root.findViewById(R.id.delete_account);
+        updateBtn = root.findViewById(R.id.materialbutton_account_update);
+        changePassword = root.findViewById(R.id.materialbutton_account_change_password);
+        deleteAccount = root.findViewById(R.id.materialbutton_account_delete_account);
 
         dataBaseActivity = new DataBaseActivity(getContext());
-        fullName = (TextView) root.findViewById(R.id.full_name);
-        studentNumber = (TextView) root.findViewById(R.id.studentNumber);
-        major = (TextView) root.findViewById(R.id.major);
-        year = (TextView) root.findViewById(R.id.year);
-        email = (TextView) root.findViewById(R.id.email);
-
         userData = dataBaseActivity.getUserData(userName);
+
+        fullName = root.findViewById(R.id.textview_account_full_name);
+        studentNumber = root.findViewById(R.id.textview_account_student_number);
+        major = root.findViewById(R.id.textview_account_major);
+        year = root.findViewById(R.id.textview_account_year);
+        email = root.findViewById(R.id.textview_account_email);
 
         fullName.setText("Full name: " + userData.get(2));
         studentNumber.setText("Student number: " + userData.get(3));
@@ -62,27 +62,14 @@ public class AccountFragment extends Fragment {
 
         NavController navController = NavHostFragment.findNavController(this);
 
-        changePW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.nav_change_password);
-            }
-        });
+        changePassword.setOnClickListener(view -> navController.navigate(R.id.nav_change_password));
 
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.nav_update_account);
-            }
-        });
+        updateBtn.setOnClickListener(view -> navController.navigate(R.id.nav_update_account));
 
-        deleteAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dataBaseActivity.deleteUser(userName);
-                Intent intent = new Intent(getContext(), LogIn.class);
-                startActivity(intent);
-            }
+        deleteAccount.setOnClickListener(view -> {
+            dataBaseActivity.deleteUser(userName);
+            Intent intent = new Intent(getContext(), LogIn.class);
+            startActivity(intent);
         });
 
         return root;

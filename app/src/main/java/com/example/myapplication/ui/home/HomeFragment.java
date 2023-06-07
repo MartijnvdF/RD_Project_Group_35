@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,30 +49,22 @@ public class HomeFragment extends Fragment {
         TextView textView = root.findViewById(R.id.custom_Msg);
         textView.setText(username);
 
-        floatingActionButton = (FloatingActionButton) root.findViewById(R.id.fab);
+        floatingActionButton = root.findViewById(R.id.fab);
 
         bookList = dataBaseActivity.getCourses(year_user);
 
         NavController navController = NavHostFragment.findNavController(this);
 
-        listView = (ListView) root.findViewById(R.id.customListView);
-        listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.activity_custom_list_view, R.id.textView, bookList));
+        listView = root.findViewById(R.id.customListView);
+        listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.custom_list_view, R.id.textView, bookList));
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Bundle bundle = new Bundle();
-                bundle.putString("course", bookList.get(i));
-                navController.navigate(R.id.nav_book, bundle);
-            }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("course", bookList.get(i));
+            navController.navigate(R.id.nav_book, bundle);
         });
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.nav_add_book);
-            }
-        });
+        floatingActionButton.setOnClickListener(view -> navController.navigate(R.id.nav_add_book));
 
         return root;
     }
