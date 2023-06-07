@@ -16,7 +16,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="my_text">My Text</string>
-    <string name="sign_in">Sign in</string>
+    <string name="sign_in">Sign In</string>
     <string name="username">Username</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -49,6 +49,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="cancel">Cancel</string>
+    <string name="attempts_left">Attempts left:</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
 
     <string-array name="year">
         <item>Select year</item>

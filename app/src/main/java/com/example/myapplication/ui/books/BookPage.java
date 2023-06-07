@@ -33,7 +33,7 @@ public class BookPage extends Fragment {
 
         dataBaseActivity = new DataBaseActivity(getContext());
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        year_user = sharedPreferences.getString("year_user", "");
+        year_user = sharedPreferences.getString("YEAR_USER", "");
 
         listView = (ListView) view.findViewById(R.id.list_book_page);
         bookArray = dataBaseActivity.getBookInfo(getArguments().getString("course"), year_user);

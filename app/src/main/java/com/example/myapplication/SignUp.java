@@ -61,7 +61,7 @@ public class SignUp extends AppCompatActivity {
                         Boolean insert = dataBaseActivity.insertUser(user, pw, fn, em, mj, yr);
                         if(insert){
                             Toast.makeText(SignUp.this, "SIGN UP SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignUp.this, MainActivity.class));
+                            startActivity(new Intent(SignUp.this, LogIn.class));
                             finish();
                         }else{
                             Toast.makeText(SignUp.this,"SIGN UP FAILED",Toast.LENGTH_SHORT).show();
@@ -76,7 +76,7 @@ public class SignUp extends AppCompatActivity {
         });
 
         cancelBtn.setOnClickListener(view -> {
-            startActivity(new Intent(SignUp.this, MainActivity.class));
+            startActivity(new Intent(SignUp.this, LogIn.class));
             finish();
         });
 

@@ -34,7 +34,7 @@ public class UpdateAccountFragment extends Fragment {
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("Username", "");
+        String userName = sharedPreferences.getString("USERNAME", "");
 
         dataBaseActivity = new DataBaseActivity(getContext());
         user = dataBaseActivity.getUserData(userName);
@@ -79,7 +79,7 @@ public class UpdateAccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String uname = fullName.getText().toString();
+                String uName = fullName.getText().toString();
                 String uStudentNumber = studentNumber.getText().toString();
                 String uMajor = major.getText().toString();
                 String uYear = year.getSelectedItem().toString();
@@ -88,11 +88,11 @@ public class UpdateAccountFragment extends Fragment {
                 }
                 String uEmail = email.getText().toString();
 
-                if(!uname.equals("")){
-                    dataBaseActivity.updateUserData(userName, "fullName", uname);
+                if(!uName.equals("")){
+                    dataBaseActivity.updateUserData(userName, "full_name", uName);
                 }
                 if(!uStudentNumber.equals("")){
-                    dataBaseActivity.updateUserData(userName, "studentNumber", uStudentNumber);
+                    dataBaseActivity.updateUserData(userName, "student_number", uStudentNumber);
                 }
                 if(!uMajor.equals("")){
                     dataBaseActivity.updateUserData(userName, "major", uMajor);
