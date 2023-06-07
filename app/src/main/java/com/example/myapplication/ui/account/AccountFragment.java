@@ -39,14 +39,14 @@ public class AccountFragment extends Fragment {
 
         //get username from login
         SharedPreferences sharedPreferences = root.getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("USERNAME", "");
+        String username = sharedPreferences.getString("USERNAME", "");
 
         updateBtn = root.findViewById(R.id.materialbutton_account_update);
         changePassword = root.findViewById(R.id.materialbutton_account_change_password);
         deleteAccount = root.findViewById(R.id.materialbutton_account_delete_account);
 
         dataBaseActivity = new DataBaseActivity(getContext());
-        userData = dataBaseActivity.getUserData(userName);
+        userData = dataBaseActivity.getUserData(username);
 
         fullName = root.findViewById(R.id.textview_account_full_name);
         studentNumber = root.findViewById(R.id.textview_account_student_number);
@@ -67,7 +67,7 @@ public class AccountFragment extends Fragment {
         updateBtn.setOnClickListener(view -> navController.navigate(R.id.nav_update_account));
 
         deleteAccount.setOnClickListener(view -> {
-            dataBaseActivity.deleteUser(userName);
+            dataBaseActivity.deleteUser(username);
             Intent intent = new Intent(getContext(), LogIn.class);
             startActivity(intent);
         });

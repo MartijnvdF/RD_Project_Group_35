@@ -30,7 +30,7 @@ public class ChangePasswordFragment extends Fragment {
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("USERNAME", "");
+        String username = sharedPreferences.getString("USERNAME", "");
 
         changePassword = (MaterialButton) root.findViewById(R.id.materialbutton_change_password);
 
@@ -49,7 +49,7 @@ public class ChangePasswordFragment extends Fragment {
                 Toast.makeText(getContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             }else{
                 if(updatedPassword.equals(updatedConfirmPassword)){
-                    dataBaseActivity.updateUserData(userName, "password", updatedPassword);
+                    dataBaseActivity.updateUserData(username, "password", updatedPassword);
                     navController.navigateUp();
                 }else{
                     Toast.makeText(getContext(), "Confirm password doesn't match password", Toast.LENGTH_SHORT).show();

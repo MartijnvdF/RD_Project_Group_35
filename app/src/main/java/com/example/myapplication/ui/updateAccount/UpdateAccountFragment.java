@@ -34,10 +34,10 @@ public class UpdateAccountFragment extends Fragment {
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        String userName = sharedPreferences.getString("USERNAME", "");
+        String username = sharedPreferences.getString("USERNAME", "");
 
         dataBaseActivity = new DataBaseActivity(getContext());
-        user = dataBaseActivity.getUserData(userName);
+        user = dataBaseActivity.getUserData(username);
 
         updateBtn = root.findViewById(R.id.materialbutton_update_account);
 
@@ -75,19 +75,19 @@ public class UpdateAccountFragment extends Fragment {
             String uEmail = email.getText().toString();
 
             if(!uName.equals("")){
-                dataBaseActivity.updateUserData(userName, "full_name", uName);
+                dataBaseActivity.updateUserData(username, "full_name", uName);
             }
             if(!uStudentNumber.equals("")){
-                dataBaseActivity.updateUserData(userName, "student_number", uStudentNumber);
+                dataBaseActivity.updateUserData(username, "student_number", uStudentNumber);
             }
             if(!uMajor.equals("")){
-                dataBaseActivity.updateUserData(userName, "major", uMajor);
+                dataBaseActivity.updateUserData(username, "major", uMajor);
             }
             if(!uYear.equals("")){
-                dataBaseActivity.updateUserData(userName, "year", uYear);
+                dataBaseActivity.updateUserData(username, "year", uYear);
             }
             if(!uEmail.equals("")){
-                dataBaseActivity.updateUserData(userName, "email", uEmail);
+                dataBaseActivity.updateUserData(username, "email", uEmail);
             }
 
             navController.navigateUp();

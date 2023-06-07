@@ -187,16 +187,16 @@ public class DataBaseActivity extends SQLiteOpenHelper{
 
     public String getYearUser(String user){
         SQLiteDatabase database = this.getReadableDatabase();
-        String year_user;
+        String yearUser;
         try {
             Cursor cursor = database.rawQuery("SELECT " + YEAR_USER + " FROM " + USERS + " WHERE " + USERNAME + " =?", new String[]{user});
             cursor.moveToFirst();
-            year_user = cursor.getString(0);
+            yearUser = cursor.getString(0);
             cursor.close();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
-        return year_user;
+        return yearUser;
     }
 
     public void updateUserData(String username, String name, String value){
