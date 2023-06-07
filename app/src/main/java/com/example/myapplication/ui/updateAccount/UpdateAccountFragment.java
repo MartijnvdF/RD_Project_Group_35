@@ -15,13 +15,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.myapplication.DataBaseActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.UpdateAccountBinding;
+import com.example.myapplication.databinding.FragmentUpdateAccountBinding;
 import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 
 public class UpdateAccountFragment extends Fragment {
 
-    private UpdateAccountBinding binding;
+    private FragmentUpdateAccountBinding binding;
     MaterialButton updateBtn;
     EditText fullName, studentNumber, major, email;
     Spinner year;
@@ -30,7 +30,7 @@ public class UpdateAccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = UpdateAccountBinding.inflate(inflater, container, false);
+        binding = FragmentUpdateAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
@@ -39,38 +39,26 @@ public class UpdateAccountFragment extends Fragment {
         dataBaseActivity = new DataBaseActivity(getContext());
         user = dataBaseActivity.getUserData(userName);
 
-        updateBtn = root.findViewById(R.id.uupdateaccountbtn);
+        updateBtn = root.findViewById(R.id.materialbutton_update_account);
 
-        fullName = root.findViewById(R.id.ufull_name);
+        fullName = root.findViewById(R.id.edittext_update_account_full_name);
         fullName.setHint(user.get(2));
 
-        studentNumber = root.findViewById(R.id.ustudentNumber);
+        studentNumber = root.findViewById(R.id.edittext_update_account_student_number);
         if(!user.get(3).equals(""))
             studentNumber.setHint(user.get(3));
 
-        major = root.findViewById(R.id.uMajor);
+        major = root.findViewById(R.id.edittext_update_account_major);
         major.setHint(user.get(4));
 
-        year = root.findViewById(R.id.uYear);
+        year = root.findViewById(R.id.spinner_update_account_year);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.year, R.layout.list_item_spinner_year);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year.setAdapter(adapter);
 
-        int pos = 0;
-        switch (user.get(5)){
-            case "first":
-                pos=1;
-                break;
-            case "second":
-                pos=2;
-                break;
-            case "third":
-                pos=3;
-                break;
-        }
-        year.setSelection(pos);
+        setYearSelection(year, user);
 
-        email = root.findViewById(R.id.uEmail);
+        email = root.findViewById(R.id.edittext_update_account_email);
         email.setHint(user.get(6));
 
         NavController navController = NavHostFragment.findNavController(this);
@@ -106,6 +94,22 @@ public class UpdateAccountFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public void setYearSelection(Spinner spinner, ArrayList<String> list){
+        int pos = 0;
+        switch (list.get(5)){
+            case "first":
+                pos=1;
+                break;
+            case "second":
+                pos=2;
+                break;
+            case "third":
+                pos=3;
+                break;
+        }
+        spinner.setSelection(pos);
     }
 
     @Override
