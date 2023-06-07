@@ -187,7 +187,7 @@ public class DataBaseActivity extends SQLiteOpenHelper{
 
     public String getYearUser(String user){
         SQLiteDatabase database = this.getReadableDatabase();
-        String year_user = "";
+        String year_user;
         try {
             Cursor cursor = database.rawQuery("SELECT " + YEAR_USER + " FROM " + USERS + " WHERE " + USERNAME + " =?", new String[]{user});
             cursor.moveToFirst();
@@ -248,9 +248,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
         return count > 0;
     }
 
-    public Boolean checkISBN(String isbn, String title){
+    public Boolean checkISBN(String isbn, String title, String table){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + BOOKS + " WHERE " + ISBN + " = ? AND " + TITLE + " = ?", new String[]{isbn, title});
+        Cursor cursor = database.rawQuery("SELECT * FROM " + table + " WHERE " + ISBN + " = ? AND " + TITLE + " = ?", new String[]{isbn, title});
         int count = cursor.getCount();
         cursor.close();
         return count > 0;

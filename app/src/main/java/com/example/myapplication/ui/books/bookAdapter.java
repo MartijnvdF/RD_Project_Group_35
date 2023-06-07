@@ -19,15 +19,15 @@ public class bookAdapter extends ArrayAdapter<Book> {
         Book book = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.book_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_book, parent, false);
         }
 
         //Get all the corresponding text view fields
-        TextView bookISBN = convertView.findViewById(R.id.isbn_book_page);
-        TextView bookAuthor = convertView.findViewById(R.id.author_book_page);
-        TextView bookTitle = convertView.findViewById(R.id.title_book_page);
-        TextView bookVersion = convertView.findViewById(R.id.version_book_page);
-        TextView bookYear = convertView.findViewById(R.id.year_book_page);
+        TextView bookISBN = convertView.findViewById(R.id.textview_book_page_isbn);
+        TextView bookAuthor = convertView.findViewById(R.id.textview_book_page_author);
+        TextView bookTitle = convertView.findViewById(R.id.textview_book_page_title);
+        TextView bookVersion = convertView.findViewById(R.id.textview_book_page_version);
+        TextView bookYear = convertView.findViewById(R.id.textview_book_page_year);
 
         //Set the data for the text view fields
         bookISBN.setText("ISBN: " + book.get_isbn());

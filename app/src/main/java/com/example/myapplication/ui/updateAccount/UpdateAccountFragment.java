@@ -39,7 +39,7 @@ public class UpdateAccountFragment extends Fragment {
         dataBaseActivity = new DataBaseActivity(getContext());
         user = dataBaseActivity.getUserData(userName);
 
-        updateBtn = (MaterialButton) root.findViewById(R.id.uupdateaccountbtn);
+        updateBtn = root.findViewById(R.id.uupdateaccountbtn);
 
         fullName = root.findViewById(R.id.ufull_name);
         fullName.setHint(user.get(2));
@@ -52,7 +52,7 @@ public class UpdateAccountFragment extends Fragment {
         major.setHint(user.get(4));
 
         year = root.findViewById(R.id.uYear);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.year, R.layout.list_item_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.year, R.layout.list_item_spinner_year);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year.setAdapter(adapter);
 
@@ -75,37 +75,34 @@ public class UpdateAccountFragment extends Fragment {
 
         NavController navController = NavHostFragment.findNavController(this);
 
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        updateBtn.setOnClickListener(view -> {
 
-                String uName = fullName.getText().toString();
-                String uStudentNumber = studentNumber.getText().toString();
-                String uMajor = major.getText().toString();
-                String uYear = year.getSelectedItem().toString();
-                if(uYear.equals("Select year")){
-                    uYear = "";
-                }
-                String uEmail = email.getText().toString();
-
-                if(!uName.equals("")){
-                    dataBaseActivity.updateUserData(userName, "full_name", uName);
-                }
-                if(!uStudentNumber.equals("")){
-                    dataBaseActivity.updateUserData(userName, "student_number", uStudentNumber);
-                }
-                if(!uMajor.equals("")){
-                    dataBaseActivity.updateUserData(userName, "major", uMajor);
-                }
-                if(!uYear.equals("")){
-                    dataBaseActivity.updateUserData(userName, "year", uYear);
-                }
-                if(!uEmail.equals("")){
-                    dataBaseActivity.updateUserData(userName, "email", uEmail);
-                }
-
-                navController.navigateUp();
+            String uName = fullName.getText().toString();
+            String uStudentNumber = studentNumber.getText().toString();
+            String uMajor = major.getText().toString();
+            String uYear = year.getSelectedItem().toString();
+            if(uYear.equals("Select year")){
+                uYear = "";
             }
+            String uEmail = email.getText().toString();
+
+            if(!uName.equals("")){
+                dataBaseActivity.updateUserData(userName, "full_name", uName);
+            }
+            if(!uStudentNumber.equals("")){
+                dataBaseActivity.updateUserData(userName, "student_number", uStudentNumber);
+            }
+            if(!uMajor.equals("")){
+                dataBaseActivity.updateUserData(userName, "major", uMajor);
+            }
+            if(!uYear.equals("")){
+                dataBaseActivity.updateUserData(userName, "year", uYear);
+            }
+            if(!uEmail.equals("")){
+                dataBaseActivity.updateUserData(userName, "email", uEmail);
+            }
+
+            navController.navigateUp();
         });
 
         return root;

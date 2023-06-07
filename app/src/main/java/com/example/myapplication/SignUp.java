@@ -31,7 +31,7 @@ public class SignUp extends AppCompatActivity {
         major = findViewById(R.id.edittext_sign_up_major);
         year = findViewById(R.id.edittext_sign_up_year);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, R.layout.list_item_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, R.layout.list_item_spinner_year);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year.setAdapter(adapter);
 

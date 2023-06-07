@@ -7,58 +7,53 @@
     android:backgroundTint="@color/light_blue">
 
     <TextView
-        android:id="@+id/title_book_page"
+        android:id="@+id/textview_book_page_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="id_placeholder"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/isbn_book_page"
+        android:id="@+id/textview_book_page_isbn"
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:text="isbn_placeholder"
         android:textSize="20sp"
-        android:layout_below="@id/title_book_page"
+        android:layout_below="@id/textview_book_page_title"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="34dp" />
 
     <TextView
-        android:id="@+id/author_book_page"
+        android:id="@+id/textview_book_page_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:text="author_placeholder"
-        android:layout_below="@+id/isbn_book_page"/>
+        android:layout_below="@+id/textview_book_page_isbn"/>
 
     <TextView
-        android:id="@+id/version_book_page"
+        android:id="@+id/textview_book_page_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="version_placeholder"
-        android:layout_below="@+id/author_book_page"/>
+        android:layout_below="@+id/textview_book_page_author"/>
 
     <TextView
-        android:id="@+id/year_book_page"
+        android:id="@+id/textview_book_page_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:text="year_placeholder"
-        android:layout_below="@id/version_book_page"
+        android:layout_below="@id/textview_book_page_version"
         android:layout_marginBottom="10dp"/>
 </RelativeLayout>
