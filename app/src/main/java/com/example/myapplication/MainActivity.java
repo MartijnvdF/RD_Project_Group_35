@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -41,7 +41,7 @@ public class MainActivity3 extends AppCompatActivity {
         //logging out
         MenuItem logoutItem = navigationView.getMenu().findItem(R.id.logout);
         logoutItem.setOnMenuItemClickListener(menuItem -> {
-            startActivity(new Intent(MainActivity3.this, LogIn.class));
+            startActivity(new Intent(MainActivity.this, LogIn.class));
             finish();
             return true;
         });

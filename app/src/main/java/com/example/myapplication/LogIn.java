@@ -71,7 +71,7 @@ public class LogIn extends AppCompatActivity {
                         dataBaseActivity.fillBooksDatabase(getResources().openRawResource(R.raw.books), yearUser);
 
                     //redirect to main app
-                    Intent intent = new Intent(LogIn.this, MainActivity3.class);
+                    Intent intent = new Intent(LogIn.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
