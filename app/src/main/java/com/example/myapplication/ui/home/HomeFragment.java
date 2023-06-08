@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
 
         dataBaseActivity = new DataBaseActivity(getContext());
 
-        //get username from login page
+        //get username from login page and year of user from database
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME", "");
         String yearUser = sharedPreferences.getString("YEAR_USER", "");

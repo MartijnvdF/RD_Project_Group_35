@@ -137,6 +137,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     }
 
     public ArrayList<String> getCourses(String table){
+        /**
+         * get all courses from table and put them in a list
+         */
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<String> courses = new ArrayList<>();
 
@@ -153,6 +156,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     }
 
     public ArrayList<String> getUserData(String name){
+        /**
+         * get all data of a user from database and put it in a list
+         */
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + USERS + " WHERE " + USERNAME + " =?", new String[]{name});
         ArrayList<String> userData = new ArrayList<>();
@@ -168,6 +174,9 @@ public class DataBaseActivity extends SQLiteOpenHelper{
     }
 
     public ArrayList<Book> getBookInfo(String course, String table){
+        /**
+         * get all information of the books needed for a course from table and put them in a list
+         */
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<Book> books = new ArrayList<>();
 
